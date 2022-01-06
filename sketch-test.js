@@ -8,18 +8,23 @@ function setup() {
   noCanvas();
 
   //Assign HTML buttons to variable
-  let sendData = select("#send-data");
+  let inputName = select("#input-name");
+
   let answer1 = select("#answer-1");
   let answer2 = select("#answer-2");
   let answer3 = select("#answer-3");
   let answer4 = select("#answer-4");
   let answer5 = select("#answer-5");
 
+  let sendData = select("#send-data");
+
+  // let getName = inputName.value;
+
   //Functions to send data to Firebase
   function send_data() {
     const newUser = {
-      name: "lociobello",
-      date: "06-01-2022",
+      name: inputName.value(),
+      date: today,
       // parts: [chestX, buttX, legX, headX, antX],
       chest: chestX,
       butt: buttX,
@@ -49,13 +54,14 @@ function setup() {
   }
 
   //When button is clicked execute function
-  sendData.mousePressed(send_data);
 
   answer1.mousePressed(chest_1);
   answer2.mousePressed(butt_2);
   answer3.mousePressed(leg_3);
   answer4.mousePressed(head_4);
   answer5.mousePressed(ant_5);
+
+  sendData.mousePressed(send_data);
 
   // if (allParts) {
   //   for (key in allParts) {
@@ -68,6 +74,14 @@ function setup() {
   //   Number(key),
   //   allParts[key],
   // ]);
+
+  let today = new Date();
+  let day = String(today.getDate()).padStart(2, "0");
+  let month = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+  let year = today.getFullYear();
+
+  today = day + "/" + month + "/" + year;
+  console.log(today);
 }
 
 function draw() {}
