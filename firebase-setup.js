@@ -32,21 +32,36 @@ async function firebaseSetup() {
 
   //read------------------------------------------------------------
 
-  //Read test
-  const partRef = ref(myDatabase, "insects/user1/parts");
-  // console.log(partRef);
-
-  onValue(partRef, function (snapshot) {
-    allParts = snapshot.val();
-    console.log(allParts);
-  });
+  //Reference
+  const chestRef = ref(myDatabase, "insects/user1/parts");
+  const buttRef = ref(myDatabase, "insects/user1/parts");
+  const legRef = ref(myDatabase, "insects/user1/parts");
 
   //write-------------------------------------------------------------
 
-  addPart = function (properties) {
-    const addPartRef = push(partRef);
-    set(addPartRef, properties);
+  addChest = function (properties) {
+    const addChestRef = push(chestRef);
+    set(addChestRef, properties);
   };
+  addButt = function (properties) {
+    const addButtRef = push(buttRef);
+    set(addButtRef, properties);
+  };
+  addLeg = function (properties) {
+    const addLegRef = push(legRef);
+    set(addLegRef, properties);
+  };
+
+  const giveMe = ref(myDatabase, "insects/user1/parts");
+  onValue(giveMe, function (snapshot) {
+    allParts = snapshot.val();
+    console.log(allParts);
+    let array = Object.values(allParts);
+    console.log(array);
+    console.log(array[0].chest);
+    console.log(array[1].butt);
+    console.log(array[2].leg);
+  });
 }
 
 firebaseSetup();

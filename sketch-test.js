@@ -7,29 +7,41 @@ function setup() {
   let answer3 = select("#answer-3");
 
   //Functions to send data to Firebase
-  function send_butt_1() {
-    const newPart = {
-      butt: 1,
+  function send_chest_1() {
+    const newChest = {
+      chest: 1,
     };
-    addPart(newPart);
+    addChest(newChest);
   }
   function send_butt_2() {
     const newPart = {
       butt: 2,
     };
-    addPart(newPart);
+    addButt(newPart);
   }
-  function send_butt_3() {
+  function send_leg_3() {
     const newPart = {
-      butt: 3,
+      leg: 3,
     };
-    addPart(newPart);
+    addLeg(newPart);
   }
 
   //When button is clicked execute function
-  answer1.mousePressed(send_butt_1);
+  answer1.mousePressed(send_chest_1);
   answer2.mousePressed(send_butt_2);
-  answer3.mousePressed(send_butt_3);
+  answer3.mousePressed(send_leg_3);
+
+  // if (allParts) {
+  //   for (key in allParts) {
+  //     let part = allParts[key];
+  //     console.log(part.chest, part.butt, part.leg);
+  //   }
+  // }
+
+  // let allPartsArray = Object.keys(allParts).map((key) => [
+  //   Number(key),
+  //   allParts[key],
+  // ]);
 }
 
 function draw() {}
