@@ -8,3 +8,8 @@ canvas {
   display: block;
   position: absolute;
 }
+
+button {
+  margin: 20px;
+  padding: 10px;
+}
