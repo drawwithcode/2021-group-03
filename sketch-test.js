@@ -1,35 +1,61 @@
+let chestX;
+let buttX;
+let headX;
+let legX;
+let antX;
+
 function setup() {
   noCanvas();
 
   //Assign HTML buttons to variable
+  let sendData = select("#send-data");
   let answer1 = select("#answer-1");
   let answer2 = select("#answer-2");
   let answer3 = select("#answer-3");
+  let answer4 = select("#answer-4");
+  let answer5 = select("#answer-5");
 
   //Functions to send data to Firebase
-  function send_chest_1() {
-    const newChest = {
-      chest: 1,
+  function send_data() {
+    const newUser = {
+      name: "lociobello",
+      date: "06-01-2022",
+      // parts: [chestX, buttX, legX, headX, antX],
+      chest: chestX,
+      butt: buttX,
+      leg: legX,
+      head: headX,
+      ant: antX,
     };
-    addChest(newChest);
+    addUser(newUser);
+    console.log(newUser.name);
+    console.log("antenna n." + newUser.ant);
   }
-  function send_butt_2() {
-    const newPart = {
-      butt: 2,
-    };
-    addButt(newPart);
+
+  function chest_1() {
+    chestX = "1";
   }
-  function send_leg_3() {
-    const newPart = {
-      leg: 3,
-    };
-    addLeg(newPart);
+  function butt_2() {
+    buttX = "2";
+  }
+  function leg_3() {
+    legX = "3";
+  }
+  function head_4() {
+    headX = "4";
+  }
+  function ant_5() {
+    antX = "5";
   }
 
   //When button is clicked execute function
-  answer1.mousePressed(send_chest_1);
-  answer2.mousePressed(send_butt_2);
-  answer3.mousePressed(send_leg_3);
+  sendData.mousePressed(send_data);
+
+  answer1.mousePressed(chest_1);
+  answer2.mousePressed(butt_2);
+  answer3.mousePressed(leg_3);
+  answer4.mousePressed(head_4);
+  answer5.mousePressed(ant_5);
 
   // if (allParts) {
   //   for (key in allParts) {
@@ -45,3 +71,18 @@ function setup() {
 }
 
 function draw() {}
+
+// OLD
+
+// function send_butt_2() {
+//   const newPart = {
+//     butt: 2,
+//   };
+//   addButt(newPart);
+// }
+// function send_leg_3() {
+//   const newPart = {
+//     leg: 3,
+//   };
+//   addLeg(newPart);
+// }
