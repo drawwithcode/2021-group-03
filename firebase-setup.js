@@ -30,8 +30,10 @@ async function firebaseSetup() {
   // Initialize Database
   const myDatabase = getDatabase(app);
 
+  //read------------------------------------------------------------
+
   //Read test
-  const partRef = ref(myDatabase, "insects/user1/parts/butt");
+  const partRef = ref(myDatabase, "insects/user1/parts");
   // console.log(partRef);
 
   onValue(partRef, function (snapshot) {
@@ -39,18 +41,12 @@ async function firebaseSetup() {
     console.log(allParts);
   });
 
-  // addPart = function (properties) {
-  //   const newPartRef = push(partRef);
-  //   set(newPartRef, properties);
-  // };
+  //write-------------------------------------------------------------
 
-  // const props = {
-  //   text: "test the databse",
-  //   x: 50,
-  //   y: 50,
-  // };
-
-  // addPart(props);
+  addPart = function (properties) {
+    const addPartRef = push(partRef);
+    set(addPartRef, properties);
+  };
 }
 
 firebaseSetup();
