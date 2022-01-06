@@ -1,7 +1,8 @@
-let allParts;
-let allUsers;
+let Insects;
+let InsectsArray;
+let myArray = [];
 
-let addPart;
+let addUser;
 
 // Load and initialize Firebase
 async function firebaseSetup() {
@@ -32,44 +33,30 @@ async function firebaseSetup() {
   // Initialize Database
   const myDatabase = getDatabase(app);
 
-  //read------------------------------------------------------------
-
   //Reference
   const userRef = ref(myDatabase, "insects");
 
-  // const chestRef = ref(myDatabase, "insects/-Msjefxm8UfdHMXSZA7y/parts");
-  // const buttRef = ref(myDatabase, "insects/-Msjefxm8UfdHMXSZA7y/parts");
-  // const legRef = ref(myDatabase, "insects/-Msjefxm8UfdHMXSZA7y/parts");
-
-  //write-------------------------------------------------------------
+  //-------------WRITE----------------------
 
   addUser = function (properties) {
     const addUserRef = push(userRef);
     set(addUserRef, properties);
   };
 
-  // addChest = function (properties) {
-  //   const addChestRef = push(chestRef);
-  //   set(addChestRef, properties);
-  // };
-  // addButt = function (properties) {
-  //   const addButtRef = push(buttRef);
-  //   set(addButtRef, properties);
-  // };
-  // addLeg = function (properties) {
-  //   const addLegRef = push(legRef);
-  //   set(addLegRef, properties);
-  // };
+  //--------------READ---------------------
 
-  // const giveMe = ref(myDatabase, "insects/-Msjefxm8UfdHMXSZA7y/parts");
-  // onValue(giveMe, function (snapshot) {
-  //   allParts = snapshot.val();
-  //   console.log(allParts);
-  //   let allPartsArray = Object.values(allParts);
-  //   console.log(allPartsArray);
-  //   console.log(allPartsArray[0].chest);
-  //   console.log(allPartsArray[1].butt);
-  //   console.log(allPartsArray[2].leg);
+  // const giveMeData = ref(myDatabase, "insects");
+
+  // onValue(giveMeData, function (snapshot) {
+  //   Insects = snapshot.val();
+
+  //   InsectsArray = Object.values(Insects);
+  //   console.log(InsectsArray);
+
+  //   myArray.push(InsectsArray);
+
+  // console.log(InsectsArray[0].butt);
+  // console.log(InsectsArray[0].butt);
   // });
 }
 

@@ -7,14 +7,21 @@ body {
 canvas {
   display: block;
   position: absolute;
+  top: 0;
+  z-index: -1;
 }
 
 button {
-  margin: 20px 10px;
+  margin: 10px 10px;
   padding: 10px;
   cursor: pointer;
+  width: 100px;
 }
 
 #send-data {
   background-color: red;
+}
+
+input {
+  margin: 10px;
 }

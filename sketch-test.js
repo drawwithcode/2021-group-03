@@ -10,11 +10,25 @@ function setup() {
   //Assign HTML buttons to variable
   let inputName = select("#input-name");
 
-  let answer1 = select("#answer-1");
-  let answer2 = select("#answer-2");
-  let answer3 = select("#answer-3");
-  let answer4 = select("#answer-4");
-  let answer5 = select("#answer-5");
+  let setChest1 = select("#chest-1");
+  let setChest2 = select("#chest-2");
+  let setChest3 = select("#chest-3");
+
+  let setButt1 = select("#butt-1");
+  let setButt2 = select("#butt-2");
+  let setButt3 = select("#butt-3");
+
+  let setLeg1 = select("#leg-1");
+  let setLeg2 = select("#leg-2");
+  let setLeg3 = select("#leg-3");
+
+  let setHead1 = select("#head-1");
+  let setHead2 = select("#head-2");
+  let setHead3 = select("#head-3");
+
+  let setAnt1 = select("#ant-1");
+  let setAnt2 = select("#ant-2");
+  let setAnt3 = select("#ant-3");
 
   let sendData = select("#send-data");
 
@@ -40,26 +54,74 @@ function setup() {
   function chest_1() {
     chestX = "1";
   }
+  function chest_2() {
+    chestX = "2";
+  }
+  function chest_3() {
+    chestX = "3";
+  }
+
+  function butt_1() {
+    buttX = "1";
+  }
   function butt_2() {
     buttX = "2";
   }
+  function butt_3() {
+    buttX = "3";
+  }
+
+  function leg_1() {
+    legX = "2";
+  }
+  function leg_2() {
+    legX = "4";
+  }
   function leg_3() {
-    legX = "3";
+    legX = "5";
   }
-  function head_4() {
-    headX = "4";
+
+  function head_1() {
+    headX = "1";
   }
-  function ant_5() {
-    antX = "5";
+  function head_2() {
+    headX = "2";
+  }
+  function head_3() {
+    headX = "5";
+  }
+
+  function ant_1() {
+    antX = "1";
+  }
+  function ant_2() {
+    antX = "2";
+  }
+  function ant_3() {
+    antX = "3";
   }
 
   //When button is clicked execute function
 
-  answer1.mousePressed(chest_1);
-  answer2.mousePressed(butt_2);
-  answer3.mousePressed(leg_3);
-  answer4.mousePressed(head_4);
-  answer5.mousePressed(ant_5);
+  setChest1.mousePressed(chest_1);
+  setChest2.mousePressed(chest_2);
+  setChest3.mousePressed(chest_3);
+
+  setButt1.mousePressed(butt_1);
+  setButt2.mousePressed(butt_2);
+  setButt3.mousePressed(butt_3);
+
+  setLeg1.mousePressed(leg_1);
+  setLeg2.mousePressed(leg_2);
+  setLeg3.mousePressed(leg_3);
+
+  setHead1.mousePressed(head_1);
+  setHead2.mousePressed(head_2);
+  setHead3.mousePressed(head_3);
+
+  setAnt1.mousePressed(ant_1);
+  setAnt2.mousePressed(ant_2);
+  setAnt3.mousePressed(ant_3);
 
   sendData.mousePressed(send_data);
 
@@ -80,7 +142,7 @@ function setup() {
   let month = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
   let year = today.getFullYear();
 
-  today = day + "/" + month + "/" + year;
+  today = day + " / " + month + " / " + year;
   console.log(today);
 }
 
