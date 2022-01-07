@@ -25,3 +25,15 @@ button {
 input {
   margin: 10px;
 }
+
+.insect-box {
+  border: 1px solid black;
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+}
+
+#archive-container {
+  display: flex;
+  flex-wrap: wrap;
+}

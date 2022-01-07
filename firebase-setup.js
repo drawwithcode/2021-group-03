@@ -1,11 +1,15 @@
+let Insects;
 let InsectsArray;
+let myArray = [];
+
+let addUser;
 
 // Load and initialize Firebase
 async function firebaseSetup() {
   // Load firebase modules using import("url")
-  const fb_app = "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+  const fb_app = "https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js";
   const fb_database =
-    "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+    "https://www.gstatic.com/firebasejs/9.5.0/firebase-database.js";
 
   //Load libraries
   const { initializeApp } = await import(fb_app);
@@ -30,14 +34,14 @@ async function firebaseSetup() {
   const myDatabase = getDatabase(app);
 
   //Reference
-  // const userRef = ref(myDatabase, "insects");
+  const userRef = ref(myDatabase, "insects");
 
   //-------------WRITE----------------------
 
-  // addUser = function (properties) {
-  //   const addUserRef = push(userRef);
-  //   set(addUserRef, properties);
-  // };
+  addUser = function (properties) {
+    const addUserRef = push(userRef);
+    set(addUserRef, properties);
+  };
 
   //--------------READ---------------------
 
@@ -46,7 +50,7 @@ async function firebaseSetup() {
   onValue(giveMeData, function (snapshot) {
     const Insects = snapshot.val();
     InsectsArray = Object.values(Insects);
-    console.log(InsectsArray);
+    // console.log(InsectsArray);
   });
 }
 
