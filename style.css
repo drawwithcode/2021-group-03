@@ -68,11 +68,10 @@ input {
   position: relative;
   display: flex;
   height: 250px;
-  margin-bottom: -13%;
+  margin-bottom: -22%;
 }
 .part-img {
   width: 100%;
   position: absolute;
-  margin-top: -20%;
-  margin-bottom: -10%;
+  margin-top: -30%;
 }
