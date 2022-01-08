@@ -72,13 +72,13 @@ function setup() {
   }
 
   function leg_1() {
-    legX = "2";
+    legX = "1";
   }
   function leg_2() {
     legX = "4";
   }
   function leg_3() {
-    legX = "5";
+    legX = "3";
   }
 
   function head_1() {
