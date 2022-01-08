@@ -12,6 +12,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: #fffcf1;
+  font-family: century-regular;
 }
 
 canvas {
@@ -27,8 +28,14 @@ button {
   cursor: pointer;
   width: 100px;
 }
+
 p {
   margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }
 
 #send-data {
@@ -54,6 +61,7 @@ input {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: 40px;
 }
 
 .name {
@@ -74,4 +82,36 @@ input {
   width: 100%;
   position: absolute;
   margin-top: -30%;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 14px 20px 20px 20px;
+  font-size: 22px;
+  letter-spacing: 0.05em;
+}
+.navbar-right {
+  display: flex;
+  flex-direction: row;
+}
+.navbar-btn {
+  margin: 0 12px 0 12px;
+  border-bottom: 1px solid #c2b0a5;
+  padding-bottom: 2px;
+}
+.active-btn {
+  font-family: century-italic;
+  border: none;
+}
+select {
+  font-family: century-regular;
+  font-size: 22px;
+  cursor: pointer;
+  border: none;
+  border-bottom: 1px solid #c2b0a5;
+  padding-bottom: 2px;
+  color: black;
+  background-color: #fffcf1;
 }

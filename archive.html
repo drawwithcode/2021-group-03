@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Your Inner Insect</title>
+    <title>Prova</title>
     <link rel="icon" type="image/x-icon" href="/assets/favicon2.png" />
 
     <link rel="stylesheet" type="text/css" href="style.css" />
@@ -14,10 +14,25 @@
   </head>
 
   <body>
-    <a href="test.html">TEST</a>
-    <a href="prova.html">PROVA</a>
+    <div class="navbar" id="navbar-archive">
+      <a id="home-btn" href="index.html">YOUR INNER INSECT</a>
+      <div>
+        <label for="sorting">Sort by</label>
+        <select name="sorting">
+          <option value="date">Date</option>
+          <option value="name">Name</option>
+          <option value="name">Type</option>
+        </select>
+      </div>
+      <div class="navbar-right">
+        <a class="navbar-btn" id="begin-btn" href="test.html">BEGIN</a>
+        <a class="navbar-btn active-btn" id="archive-btn" href="#">ARCHIVE</a>
+        <a class="navbar-btn" id="about-btn" href="about.html">ABOUT</a>
+      </div>
+    </div>
+
     <div id="archive-container"></div>
-    <script src="sketch-archive.js"></script>
     <script src="firebase-setup.js"></script>
+    <script src="sketch-archive.js"></script>
   </body>
 </html>
