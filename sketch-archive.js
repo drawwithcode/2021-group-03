@@ -12,6 +12,7 @@ function draw() {
         .id("box-" + i)
         .addClass("insect-box")
         .parent("archive-container");
+
       noLoop();
 
       let Chest = InsectsArray[i].chest;
@@ -22,19 +23,19 @@ function draw() {
 
       let partsBox = createDiv().parent(box).addClass("partsBox");
 
-      let legBox = createImg("assets/parts/leg/leg-" + Leg + ".png")
+      let legBox = createImg("assets/partsNew/leg/leg-" + Leg + ".png")
         .parent(partsBox)
         .addClass("part-img");
-      let antBox = createImg("assets/parts/ant/ant-" + Ant + ".png")
+      let antBox = createImg("assets/partsNew/ant/ant-" + Ant + ".png")
         .parent(partsBox)
         .addClass("part-img");
-      let headBox = createImg("assets/parts/head/head-" + Head + ".png")
+      let headBox = createImg("assets/partsNew/head/head-" + Head + ".png")
         .parent(partsBox)
         .addClass("part-img");
-      let buttBox = createImg("assets/parts/butt/butt-" + Butt + ".png")
+      let buttBox = createImg("assets/partsNew/butt/butt-" + Butt + ".png")
         .parent(partsBox)
         .addClass("part-img");
-      let chestBox = createImg("assets/parts/chest/chest-" + Chest + ".png")
+      let chestBox = createImg("assets/partsNew/chest/chest-" + Chest + ".png")
         .parent(partsBox)
         .addClass("part-img");
 

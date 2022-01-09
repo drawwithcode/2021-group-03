@@ -10,25 +10,25 @@ function setup() {
   //Assign HTML buttons to variable
   let inputName = select("#input-name");
 
-  let setChest1 = select("#chest-1");
-  let setChest2 = select("#chest-2");
-  let setChest3 = select("#chest-3");
+  let setChestS = select("#chest-S");
+  let setChestM = select("#chest-M");
+  let setChestB = select("#chest-B");
 
-  let setButt1 = select("#butt-1");
-  let setButt2 = select("#butt-2");
-  let setButt3 = select("#butt-3");
+  let setButtS = select("#butt-S");
+  let setButtM = select("#butt-M");
+  let setButtB = select("#butt-B");
 
-  let setLeg1 = select("#leg-1");
-  let setLeg2 = select("#leg-2");
-  let setLeg3 = select("#leg-3");
+  let setLegS = select("#leg-S");
+  let setLegM = select("#leg-M");
+  let setLegB = select("#leg-B");
 
-  let setHead1 = select("#head-1");
-  let setHead2 = select("#head-2");
-  let setHead3 = select("#head-3");
+  let setHeadS = select("#head-S");
+  let setHeadM = select("#head-M");
+  let setHeadB = select("#head-B");
 
-  let setAnt1 = select("#ant-1");
-  let setAnt2 = select("#ant-2");
-  let setAnt3 = select("#ant-3");
+  let setAntS = select("#ant-S");
+  let setAntM = select("#ant-M");
+  let setAntB = select("#ant-B");
 
   let sendData = select("#send-data");
 
@@ -39,7 +39,6 @@ function setup() {
     const newUser = {
       name: inputName.value(),
       date: today,
-      // parts: [chestX, buttX, legX, headX, antX],
       chest: chestX,
       butt: buttX,
       leg: legX,
@@ -47,81 +46,95 @@ function setup() {
       ant: antX,
     };
     addUser(newUser);
-    console.log(newUser.name);
-    console.log("antenna n." + newUser.ant);
   }
 
-  function chest_1() {
-    chestX = "1";
+  function chest_S() {
+    let chestS_List = ["S-1", "S-2", "S-3"];
+    chestX = random(chestS_List);
   }
-  function chest_2() {
-    chestX = "2";
+  function chest_M() {
+    let chestM_List = ["M-1", "M-2", "M-3", "M-4"];
+    chestX = random(chestM_List);
   }
-  function chest_3() {
-    chestX = "3";
-  }
-
-  function butt_1() {
-    buttX = "1";
-  }
-  function butt_2() {
-    buttX = "2";
-  }
-  function butt_3() {
-    buttX = "3";
+  function chest_B() {
+    let chestB_List = ["B-1", "B-2", "B-3", "B-4", "B-5", "B-6", "B-7", "B-8", "B-9"];
+    chestX = random(chestB_List);
   }
 
-  function leg_1() {
-    legX = "1";
+  function butt_S() {
+    let buttS_List = ["S-1", "S-2", "S-3", "S-4"];
+    buttX = random(buttS_List);
   }
-  function leg_2() {
-    legX = "4";
+  function butt_M() {
+    let buttM_List = ["M-1", "M-2", "M-3", "M-4", "M-5"];
+    buttX = random(buttM_List);
   }
-  function leg_3() {
-    legX = "3";
-  }
-
-  function head_1() {
-    headX = "1";
-  }
-  function head_2() {
-    headX = "2";
-  }
-  function head_3() {
-    headX = "5";
+  function butt_B() {
+    let buttB_List = ["B-1", "B-2", "B-3", "B-4", "B-5", "B-6", "B-7"];
+    buttX = random(buttB_List);
   }
 
-  function ant_1() {
-    antX = "1";
+  function leg_S() {
+    let legS_List = ["S-1", "S-2", "S-3", "S-4"];
+    legX = random(legS_List);
+    console.log(legX);
   }
-  function ant_2() {
-    antX = "2";
+  function leg_M() {
+    let legM_List = ["M-1", "M-2", "M-3", "M-4", "M-5"];
+    legX = random(legM_List);
   }
-  function ant_3() {
-    antX = "3";
+  function leg_B() {
+    let legB_List = ["B-1", "B-2", "B-3", "B-4", "B-5", "B-6", "B-7", "B-8"];
+    legX = random(legB_List);
+  }
+
+  function head_S() {
+    let headS_List = ["S-1", "S-2", "S-3", "S-4", "S-5", "S-6"];
+    headX = random(headS_List);
+  }
+  function head_M() {
+    let headM_List = ["M-1", "M-2", "M-3", "M-4", "M-5"];
+    headX = random(headM_List);
+  }
+  function head_B() {
+    let headB_List = ["B-1", "B-2", "B-3", "B-4", "B-5"];
+    headX = random(headB_List);
+  }
+
+  function ant_S() {
+    let antS_List = ["S-1", "S-2", "S-3", "S-4"];
+    antX = random(antS_List);
+  }
+  function ant_M() {
+    let antM_List = ["M-1", "M-2", "M-3", "M-4", "M-5", "M-6"];
+    antX = random(antM_List);
+  }
+  function ant_B() {
+    let antB_List = ["B-1", "B-2", "B-3", "B-4", "B-5", "B-6", "B-7"];
+    antX = random(antB_List);
   }
 
   //When button is clicked execute function
 
-  setChest1.mousePressed(chest_1);
-  setChest2.mousePressed(chest_2);
-  setChest3.mousePressed(chest_3);
+  setChestS.mousePressed(chest_S);
+  setChestM.mousePressed(chest_M);
+  setChestB.mousePressed(chest_B);
 
-  setButt1.mousePressed(butt_1);
-  setButt2.mousePressed(butt_2);
-  setButt3.mousePressed(butt_3);
+  setButtS.mousePressed(butt_S);
+  setButtM.mousePressed(butt_M);
+  setButtB.mousePressed(butt_B);
 
-  setLeg1.mousePressed(leg_1);
-  setLeg2.mousePressed(leg_2);
-  setLeg3.mousePressed(leg_3);
+  setLegS.mousePressed(leg_S);
+  setLegM.mousePressed(leg_M);
+  setLegB.mousePressed(leg_B);
 
-  setHead1.mousePressed(head_1);
-  setHead2.mousePressed(head_2);
-  setHead3.mousePressed(head_3);
+  setHeadS.mousePressed(head_S);
+  setHeadM.mousePressed(head_M);
+  setHeadB.mousePressed(head_B);
 
-  setAnt1.mousePressed(ant_1);
-  setAnt2.mousePressed(ant_2);
-  setAnt3.mousePressed(ant_3);
+  setAntS.mousePressed(ant_S);
+  setAntM.mousePressed(ant_M);
+  setAntB.mousePressed(ant_B);
 
   sendData.mousePressed(send_data);
 
@@ -150,13 +163,13 @@ function draw() {}
 
 // OLD
 
-// function send_butt_2() {
+// function send_butt_M() {
 //   const newPart = {
 //     butt: 2,
 //   };
 //   addButt(newPart);
 // }
-// function send_leg_3() {
+// function send_leg_B() {
 //   const newPart = {
 //     leg: 3,
 //   };
