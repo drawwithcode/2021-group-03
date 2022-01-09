@@ -1,14 +1,66 @@
+let nameX;
+
 let chestX;
 let buttX;
 let headX;
 let legX;
 let antX;
 
+function showHello() {
+  select("#hello").style("opacity", "1");
+}
+function hideHello() {
+  select("#hello").style("opacity", "0");
+}
+function showName() {
+  select("#askName").style("opacity", "1");
+}
+function hideName() {
+  select("#askName").style("opacity", "0");
+}
+function showIntro2() {
+  select("#intro-2").style("opacity", "1");
+}
+function waitShowIntro2() {
+  setTimeout(showIntro2, 1000);
+}
+function destroyIntro1() {
+  select("#askName").hide();
+}
+function waitDestroyIntro1() {
+  setTimeout(destroyIntro1, 1000);
+}
+function finishIntro() {
+  select("#intro-2").style("opacity", "0");
+}
+function destroyAllIntro() {
+  select("#intro-container").hide();
+  select("#prova").show();
+}
+function waitDestroyAllIntro() {
+  setTimeout(destroyAllIntro, 1000);
+}
+
 function setup() {
   noCanvas();
 
-  //Assign HTML buttons to variable
+  select("#prova").hide();
+
+  setTimeout(showHello, 500);
+  setTimeout(hideHello, 3000);
+
+  setTimeout(showName, 4000);
+  select("#send-name").mousePressed(hideName);
+  select("#send-name").mousePressed(waitShowIntro2);
+  select("#send-name").mousePressed(waitDestroyIntro1);
+
+  select("#start-test").mousePressed(finishIntro);
+  select("#start-test").mousePressed(waitDestroyAllIntro);
+
+  //Assign buttons to variable
+
   let inputName = select("#input-name");
+  let sendName = select("#send-name");
 
   let setChestS = select("#chest-S");
   let setChestM = select("#chest-M");
@@ -32,12 +84,11 @@ function setup() {
 
   let sendData = select("#send-data");
 
-  // let getName = inputName.value;
+  //Send user answers to Firebase
 
-  //Functions to send data to Firebase
   function send_data() {
     const newUser = {
-      name: inputName.value(),
+      name: nameX,
       date: today,
       chest: chestX,
       butt: buttX,
@@ -46,6 +97,12 @@ function setup() {
       ant: antX,
     };
     addUser(newUser);
+  }
+
+  //Assign body parts
+
+  function send_name() {
+    nameX = inputName.value();
   }
 
   function chest_S() {
@@ -114,7 +171,9 @@ function setup() {
     antX = random(antB_List);
   }
 
-  //When button is clicked execute function
+  //When button is clicked, assign body part
+
+  sendName.mousePressed(send_name);
 
   setChestS.mousePressed(chest_S);
   setChestM.mousePressed(chest_M);
@@ -138,40 +197,13 @@ function setup() {
 
   sendData.mousePressed(send_data);
 
-  // if (allParts) {
-  //   for (key in allParts) {
-  //     let part = allParts[key];
-  //     console.log(part.chest, part.butt, part.leg);
-  //   }
-  // }
-
-  // let allPartsArray = Object.keys(allParts).map((key) => [
-  //   Number(key),
-  //   allParts[key],
-  // ]);
+  //Get today's date
 
   let today = new Date();
   let day = String(today.getDate()).padStart(2, "0");
   let month = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
   let year = today.getFullYear();
-
   today = day + " / " + month + " / " + year;
-  console.log(today);
 }
 
 function draw() {}
-
-// OLD
-
-// function send_butt_M() {
-//   const newPart = {
-//     butt: 2,
-//   };
-//   addButt(newPart);
-// }
-// function send_leg_B() {
-//   const newPart = {
-//     leg: 3,
-//   };
-//   addLeg(newPart);
-// }
