@@ -1,5 +1,4 @@
 let nameX;
-
 let chestX;
 let buttX;
 let headX;
