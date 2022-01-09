@@ -72,6 +72,9 @@ input {
 .name {
   font-family: century-italic;
   font-size: 22px;
+  /* background-color: #fffcf1; */
+  z-index: 1;
+  background-image: linear-gradient(#fffcf100, #fffcf1, #fffcf1);
 }
 .date {
   font-family: century-regular;
@@ -154,16 +157,23 @@ select:focus {
 #about-content {
   width: 640px;
 }
-#authors {
+#underline {
+  text-decoration: underline;
+  text-decoration-color: #c2b0a5;
+}
+.authors {
   margin-top: 60px;
   line-height: 1.5em;
+  flex-basis: 50%;
 }
-#authors-names {
-  margin-top: 20px;
-}
-#authors-title {
+.authors-title {
   font-size: 18px;
   letter-spacing: 0.1em;
+  margin-bottom: 20px;
+}
+#about-infos {
+  display: flex;
+  flex-direction: row;
 }
 
 #home-container {
@@ -192,4 +202,7 @@ select:focus {
 }
 .home-btn {
   padding: 20px 0 0 0;
+}
+#credits {
+  line-height: normal;
 }
