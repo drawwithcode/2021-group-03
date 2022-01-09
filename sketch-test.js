@@ -106,11 +106,11 @@ function setup() {
     antX = random(antS_List);
   }
   function ant_M() {
-    let antM_List = ["M-1", "M-2", "M-3", "M-4", "M-5", "M-6"];
+    let antM_List = ["M-1", "M-2", "M-3", "M-4", "M-5", "M-6", "M-7", "M-8", "M-9", "M-10"];
     antX = random(antM_List);
   }
   function ant_B() {
-    let antB_List = ["B-1", "B-2", "B-3", "B-4", "B-5", "B-6", "B-7"];
+    let antB_List = ["B-1", "B-2", "B-3", "B-4"];
     antX = random(antB_List);
   }
 
