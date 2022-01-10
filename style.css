@@ -46,7 +46,7 @@ input {
 .insect-box {
   /* border: 1px solid black; */
   width: 180px;
-  margin: 10px;
+  margin: 10px 0 10px 0;
   display: flex;
   justify-content: center;
   text-align: center;
@@ -277,7 +277,15 @@ input:focus {
   width: 40%;
   padding: 0 5% 0 5%;
   height: 80vh;
+  align-items: center;
+  justify-content: center;
+  margin-top: 80px;
 }
+.drawing {
+  width: 400px;
+  position: absolute;
+}
+
 .line {
   display: flex;
   width: 1px;
@@ -309,8 +317,9 @@ input:focus {
 }
 .question-text {
   font-size: 22px;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
   text-align: center;
+  letter-spacing: 0.01em;
 }
 .next-btn {
   font-size: 22px;
@@ -318,5 +327,46 @@ input:focus {
   padding-bottom: 1px;
   width: fit-content;
   cursor: pointer;
-  margin-top: 40px;
+  margin-top: 60px;
+}
+.slider-container {
+  width: 70%;
+}
+.slider {
+  width: 100%;
+  -webkit-appearance: none; /* Override default CSS styles */
+  height: 1px;
+}
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 21px;
+  height: 21px;
+  /* border-radius: 10px; */
+  /* border: 1px solid #ac7857; */
+  /* background: #fffcf1;  */
+  background: url("assets/drag2.png");
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+.slider-text {
+  display: flex;
+  flex-direction: row;
+  font-size: 20px;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+.slider-label {
+  width: 100px;
+  flex-basis: 33%;
+  text-align: center;
+  margin-top: 10px;
+}
+.help {
+  font-size: 18px;
+  font-family: century-italic;
+  color: #ac7857;
+  margin-bottom: 40px;
+  letter-spacing: 0.03em;
 }
