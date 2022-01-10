@@ -15,6 +15,8 @@
   </head>
 
   <body>
+    <!-- INTRO -->
+
     <div id="intro-container">
       <p id="hello" class="intro-text hide">Hello.</p>
 
@@ -29,41 +31,79 @@
         <p id="intro-2-2">Please, answer as honestly as possible.</p>
         <a class="intro-btn" id="start-test">Let's start</a>
       </div>
-
-      <div id="question-1" class="question-container">
-        <div class="question-sx"></div>
-        <div class="question-dx"></div>
-      </div>
     </div>
-    <div id="prova">
-      <!-- <input type="text" id="input-name" /> -->
-      <div>
-        <button class="answer" id="chest-S">Chest S</button>
-        <button class="answer" id="chest-M">Chest M</button>
-        <button class="answer" id="chest-B">Chest B</button>
+
+    <!-- QUESTION 1 - CHEST -->
+
+    <div id="question-1" class="question-container hide">
+      <div class="question-sx">
+        <div>
+          <button class="answer" id="chest-S">Chest S</button>
+          <button class="answer" id="chest-M">Chest M</button>
+          <button class="answer" id="chest-B">Chest B</button>
+        </div>
+        <a class="intro-btn" id="showQ2">Next</a>
       </div>
-      <div>
-        <button class="answer" id="butt-S">Butt S</button>
-        <button class="answer" id="butt-M">Butt M</button>
-        <button class="answer" id="butt-B">Butt B</button>
+      <div class="question-dx"></div>
+    </div>
+
+    <!-- QUESTION 2 - BUTT -->
+
+    <div id="question-2" class="question-container hide">
+      <div class="question-sx">
+        <div>
+          <button class="answer" id="butt-S">Butt S</button>
+          <button class="answer" id="butt-M">Butt M</button>
+          <button class="answer" id="butt-B">Butt B</button>
+        </div>
+        <a class="intro-btn" id="showQ3">Next</a>
       </div>
-      <div>
-        <button class="answer" id="leg-S">Leg S</button>
-        <button class="answer" id="leg-M">Leg M</button>
-        <button class="answer" id="leg-B">Leg B</button>
+      <div class="question-dx"></div>
+    </div>
+
+    <!-- QUESTION 3 - LEG -->
+
+    <div id="question-3" class="question-container hide">
+      <div class="question-sx">
+        <div>
+          <button class="answer" id="leg-S">Leg S</button>
+          <button class="answer" id="leg-M">Leg M</button>
+          <button class="answer" id="leg-B">Leg B</button>
+        </div>
+        <a class="intro-btn" id="showQ4">Next</a>
       </div>
-      <div>
-        <button class="answer" id="head-S">Head S</button>
-        <button class="answer" id="head-M">Head M</button>
-        <button class="answer" id="head-B">Head B</button>
+      <div class="question-dx"></div>
+    </div>
+
+    <!-- QUESTION 4 - HEAD -->
+
+    <div id="question-4" class="question-container hide">
+      <div class="question-sx">
+        <div>
+          <button class="answer" id="head-S">Head S</button>
+          <button class="answer" id="head-M">Head M</button>
+          <button class="answer" id="head-B">Head B</button>
+        </div>
+        <a class="intro-btn" id="showQ5">Next</a>
       </div>
-      <div>
-        <button class="answer" id="ant-S">Ant S</button>
-        <button class="answer" id="ant-M">Ant M</button>
-        <button class="answer" id="ant-B">Ant B</button>
+      <div class="question-dx"></div>
+    </div>
+
+    <!-- QUESTION 5 - ANT -->
+
+    <div id="question-5" class="question-container hide">
+      <div class="question-sx">
+        <div>
+          <button class="answer" id="ant-S">Ant S</button>
+          <button class="answer" id="ant-M">Ant M</button>
+          <button class="answer" id="ant-B">Ant B</button>
+
+          <button class="answer" id="send-data">Send Data</button>
+          <a href="archive.html">ARCHIVE</a>
+        </div>
+        <a class="intro-btn" id="showResult">Next</a>
       </div>
-      <button class="answer" id="send-data">Send Data</button>
-      <a href="archive.html">ARCHIVE</a>
+      <div class="question-dx"></div>
     </div>
   </body>
 

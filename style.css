@@ -250,6 +250,7 @@ input:focus {
 }
 .hide {
   opacity: 0;
+  transition: 1s;
 }
 
 #askName {
