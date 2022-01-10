@@ -15,6 +15,7 @@ function hideQuestions() {
   select("#question-3").hide();
   select("#question-4").hide();
   select("#question-5").hide();
+  select("#question-container").hide();
 }
 function showHello() {
   select("#hello").style("opacity", "1");
@@ -48,8 +49,10 @@ function finishIntro() {
 }
 function destroyAllIntro() {
   select("#intro-container").hide();
-  // select("#prova").show();
-  select("#question-1").show();
+  select("#question-container").style("display", "flex");
+  select("#question-container").style("opacity", "1");
+
+  select("#question-1").style("display", "flex");
   select("#question-1").style("opacity", "1");
 }
 function waitDestroyAllIntro() {
@@ -63,7 +66,7 @@ function hideQ1() {
 }
 function showQ2() {
   select("#question-1").hide();
-  select("#question-2").show();
+  select("#question-2").style("display", "flex");
   select("#question-2").style("opacity", "1");
 }
 function waitShowQ2() {
@@ -77,7 +80,7 @@ function hideQ2() {
 }
 function showQ3() {
   select("#question-2").hide();
-  select("#question-3").show();
+  select("#question-3").style("display", "flex");
   select("#question-3").style("opacity", "1");
 }
 function waitShowQ3() {
@@ -91,7 +94,7 @@ function hideQ3() {
 }
 function showQ4() {
   select("#question-3").hide();
-  select("#question-4").show();
+  select("#question-4").style("display", "flex");
   select("#question-4").style("opacity", "1");
 }
 function waitShowQ4() {
@@ -105,7 +108,7 @@ function hideQ4() {
 }
 function showQ5() {
   select("#question-4").hide();
-  select("#question-5").show();
+  select("#question-5").style("display", "flex");
   select("#question-5").style("opacity", "1");
 }
 function waitShowQ5() {
@@ -235,6 +238,7 @@ let q3_sketch = function (p) {
 
 let q4_sketch = function (p) {
   p.setup = function () {
+    p.noCanvas();
     let setHeadS = select("#head-S");
     let setHeadM = select("#head-M");
     let setHeadB = select("#head-B");
@@ -263,6 +267,7 @@ let q4_sketch = function (p) {
 
 let q5_sketch = function (p) {
   p.setup = function () {
+    p.noCanvas();
     let setAntS = select("#ant-S");
     let setAntM = select("#ant-M");
     let setAntB = select("#ant-B");
@@ -314,8 +319,7 @@ let q5_sketch = function (p) {
 };
 
 function setup() {
-  //Assign body parts
-  //When button is clicked, assign body part
+  noCanvas();
 }
 
 // function draw() {}
@@ -327,9 +331,9 @@ let q3 = new p5(q3_sketch);
 let q4 = new p5(q4_sketch);
 let q5 = new p5(q5_sketch);
 
-intro.parent("intro-container");
-q1.parent("question-1");
-q2.parent("question-2");
-q3.parent("question-3");
-q4.parent("question-4");
-q5.parent("question-5");
+// intro.parent("intro-container");
+// q1.parent("question-1");
+// q2.parent("question-2");
+// q3.parent("question-3");
+// q4.parent("question-4");
+// q5.parent("question-5");
