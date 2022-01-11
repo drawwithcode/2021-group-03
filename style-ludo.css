@@ -1,0 +1,27 @@
+@font-face {
+  font-family: century-regular;
+  src: url(assets/fonts/century-schoolbook/cen-schlbk-r.TTF);
+}
+@font-face {
+  font-family: century-italic;
+  src: url(assets/fonts/century-schoolbook/cen-schlbk-i.TTF);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #fffcf1;
+  font-family: century-regular;
+}
+
+canvas {
+  display: block;
+}
+
+#pallino {
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  border-radius: 10px;
+}
