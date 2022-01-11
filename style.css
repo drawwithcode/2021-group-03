@@ -370,3 +370,19 @@ input:focus {
   margin-bottom: 40px;
   letter-spacing: 0.03em;
 }
+
+#chest-img {
+  z-index: 5;
+}
+#leg-img {
+  z-index: 1;
+}
+#butt-img {
+  z-index: 4;
+}
+#head-img {
+  z-index: 3;
+}
+#ant-img {
+  z-index: 2;
+}

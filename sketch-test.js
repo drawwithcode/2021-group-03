@@ -46,95 +46,6 @@ let sketch_1 = function (p) {
       setTimeout(destroyIntro1, 1000);
     }
 
-    //Go to Question 1
-
-    function finishIntro() {
-      p.select("#intro-2").style("opacity", "0");
-    }
-    function destroyAllIntro() {
-      p.select("#intro-container").hide();
-      p.select("#question-container").style("display", "flex");
-      p.select("#question-container").style("opacity", "1");
-
-      p.select("#question-1").style("display", "flex");
-      p.select("#question-1").style("opacity", "1");
-      p.select("#drawing-1").style("opacity", "1");
-    }
-    function waitDestroyAllIntro() {
-      setTimeout(destroyAllIntro, 1000);
-    }
-
-    //Go to Question 2
-
-    function hideQ1() {
-      p.select("#question-1").style("opacity", "0");
-      p.select("#drawing-1").style("opacity", "0");
-    }
-    function showQ2() {
-      p.select("#question-1").hide();
-      p.select("#question-2").style("display", "flex");
-      p.select("#question-2").style("opacity", "1");
-      p.select("#drawing-2").style("opacity", "1");
-    }
-    function waitShowQ2() {
-      setTimeout(showQ2, 1000);
-    }
-
-    //Go to Question 3
-
-    function chosenButt() {
-      p.createImg("assets/partsNew/butt/butt-" + buttX + ".png")
-        .parent("question-img")
-        .addClass("drawing");
-    }
-
-    function hideQ2() {
-      p.select("#question-2").style("opacity", "0");
-      p.select("#drawing-2").style("opacity", "0");
-    }
-    function showQ3() {
-      p.select("#question-2").hide();
-      p.select("#question-3").style("display", "flex");
-      p.select("#question-3").style("opacity", "1");
-      p.select("#drawing-3").style("opacity", "1");
-      chosenButt();
-    }
-    function waitShowQ3() {
-      setTimeout(showQ3, 1000);
-    }
-
-    //Go to Question 4
-
-    function hideQ3() {
-      p.select("#question-3").style("opacity", "0");
-      p.select("#drawing-3").style("opacity", "0");
-    }
-    function showQ4() {
-      p.select("#question-3").hide();
-      p.select("#question-4").style("display", "flex");
-      p.select("#question-4").style("opacity", "1");
-      p.select("#drawing-4").style("opacity", "1");
-    }
-    function waitShowQ4() {
-      setTimeout(showQ4, 1000);
-    }
-
-    //Go to Question 5
-
-    function hideQ4() {
-      p.select("#question-4").style("opacity", "0");
-      p.select("#drawing-4").style("opacity", "0");
-    }
-    function showQ5() {
-      p.select("#question-4").hide();
-      p.select("#question-5").style("display", "flex");
-      p.select("#question-5").style("opacity", "1");
-      p.select("#drawing-5").style("opacity", "1");
-    }
-    function waitShowQ5() {
-      setTimeout(showQ5, 1000);
-    }
-
     hideQuestions();
 
     setTimeout(showHello, 500);
@@ -157,6 +68,24 @@ let sketch_1 = function (p) {
 
     sendName.mousePressed(send_name);
 
+    //Go to Question 1
+
+    function finishIntro() {
+      p.select("#intro-2").style("opacity", "0");
+    }
+    function destroyAllIntro() {
+      p.select("#intro-container").hide();
+      p.select("#question-container").style("display", "flex");
+      p.select("#question-container").style("opacity", "1");
+
+      p.select("#question-1").style("display", "flex");
+      p.select("#question-1").style("opacity", "1");
+      p.select("#drawing-1").style("opacity", "1");
+    }
+    function waitDestroyAllIntro() {
+      setTimeout(destroyAllIntro, 1000);
+    }
+
     //---------CHEST------------
 
     let setChestS = p.select("#chest-S");
@@ -170,15 +99,63 @@ let sketch_1 = function (p) {
     function chosenChest() {
       p.createImg("assets/partsNew/chest/chest-" + chestX + ".png")
         .parent("question-img")
-        .addClass("drawing");
+        .addClass("drawing")
+        .addClass("hide")
+        .id("chest-img");
     }
 
     p.select("#showQ2").mousePressed(hideQ1);
     p.select("#showQ2").mousePressed(waitShowQ2);
-    p.select("#showQ2").mousePressed(chosenChest);
+    p.select("#showQ2").mousePressed(showChosenChest);
+
+    //Go to Question 2
+
+    function hideQ1() {
+      p.select("#question-1").style("opacity", "0");
+      p.select("#drawing-1").style("opacity", "0");
+    }
+    function showChosenChest() {
+      chosenChest();
+      p.select("#chest-img").style("opacity", "1");
+    }
+    function showQ2() {
+      p.select("#question-1").hide();
+      p.select("#question-2").style("display", "flex");
+      p.select("#question-2").style("opacity", "1");
+      p.select("#drawing-2").style("opacity", "1");
+    }
+    function waitShowQ2() {
+      setTimeout(showQ2, 1500);
+    }
 
     p.select("#showQ3").mousePressed(hideQ2);
     p.select("#showQ3").mousePressed(waitShowQ3);
+
+    //Go to Question 3
+
+    function chosenButt() {
+      p.createImg("assets/partsNew/butt/butt-" + buttX + ".png")
+        .parent("question-img")
+        .addClass("drawing")
+        .addClass("hide")
+        .id("butt-img");
+    }
+
+    function hideQ2() {
+      p.select("#question-2").style("opacity", "0");
+      p.select("#drawing-2").style("opacity", "0");
+    }
+    function showQ3() {
+      p.select("#question-2").hide();
+      p.select("#question-3").style("display", "flex");
+      p.select("#question-3").style("opacity", "1");
+      p.select("#drawing-3").style("opacity", "1");
+      chosenButt();
+      p.select("#butt-img").style("opacity", "1");
+    }
+    function waitShowQ3() {
+      setTimeout(showQ3, 1000);
+    }
 
     //---------LEG------------
 
@@ -193,6 +170,22 @@ let sketch_1 = function (p) {
     p.select("#showQ4").mousePressed(hideQ3);
     p.select("#showQ4").mousePressed(waitShowQ4);
 
+    //Go to Question 4
+
+    function hideQ3() {
+      p.select("#question-3").style("opacity", "0");
+      p.select("#drawing-3").style("opacity", "0");
+    }
+    function showQ4() {
+      p.select("#question-3").hide();
+      p.select("#question-4").style("display", "flex");
+      p.select("#question-4").style("opacity", "1");
+      p.select("#drawing-4").style("opacity", "1");
+    }
+    function waitShowQ4() {
+      setTimeout(showQ4, 1000);
+    }
+
     //---------HEAD------------
 
     let setHeadS = p.select("#head-S");
@@ -205,6 +198,22 @@ let sketch_1 = function (p) {
 
     p.select("#showQ5").mousePressed(hideQ4);
     p.select("#showQ5").mousePressed(waitShowQ5);
+
+    //Go to Question 5
+
+    function hideQ4() {
+      p.select("#question-4").style("opacity", "0");
+      p.select("#drawing-4").style("opacity", "0");
+    }
+    function showQ5() {
+      p.select("#question-4").hide();
+      p.select("#question-5").style("display", "flex");
+      p.select("#question-5").style("opacity", "1");
+      p.select("#drawing-5").style("opacity", "1");
+    }
+    function waitShowQ5() {
+      setTimeout(showQ5, 1000);
+    }
 
     //---------ANT------------
 
@@ -297,9 +306,9 @@ let sketch_1 = function (p) {
     //---------BUTT------------
 
     let q2Value = p.select("#q2-slider").value();
-    let setButt = p.select("#showQ3");
+    let setButt = p.select("#q2-slider");
 
-    setButt.mousePressed(sliderQ2);
+    setButt.mouseReleased(sliderQ2);
     // setButt.mousePressed(chosenButt);
 
     function sliderQ2() {
