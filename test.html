@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8" />
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge" /> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Your Inner Insect</title>
-
     <link rel="icon" type="image/x-icon" href="assets/favicon2.png" />
 
     <link rel="stylesheet" type="text/css" href="style.css" />
 
     <script src="libraries/p5.min.js"></script>
+    <script src="libraries/p5.sound.min.js"></script>
   </head>
 
   <body>
@@ -80,47 +80,77 @@
       <!-- QUESTION 3 - LEG -->
 
       <div class="question-sx hide" id="question-3">
+        <div class="question-text">
+          <p>How often do you avoid or do not approach <br />social situations?</p>
+        </div>
+
+        <div id="question-3-canvas"></div>
+
         <div>
           <button class="answer" id="leg-S">Leg S</button>
           <button class="answer" id="leg-M">Leg M</button>
           <button class="answer" id="leg-B">Leg B</button>
         </div>
-        <a class="intro-btn" id="showQ4">Next</a>
+        <a class="next-btn" id="showQ4">Next</a>
       </div>
 
       <!-- QUESTION 4 - HEAD -->
 
       <div class="question-sx hide" id="question-4">
+        <div class="question-text">
+          <p>How much is your life affected<br />by others' judgment?</p>
+        </div>
+
+        <div id="question-4-canvas"></div>
+
         <div>
           <button class="answer" id="head-S">Head S</button>
           <button class="answer" id="head-M">Head M</button>
           <button class="answer" id="head-B">Head B</button>
         </div>
-        <a class="intro-btn" id="showQ5">Next</a>
+        <a class="next-btn" id="showQ5">Next</a>
       </div>
 
       <!-- QUESTION 5 - ANT -->
 
       <div class="question-sx hide" id="question-5">
+        <div class="question-text">
+          <p>
+            How often do you feel you are unable to reach out <br />and communicate with those
+            around you?
+          </p>
+        </div>
+
+        <div id="question-5-canvas"></div>
+
         <div>
           <button class="answer" id="ant-S">Ant S</button>
           <button class="answer" id="ant-M">Ant M</button>
           <button class="answer" id="ant-B">Ant B</button>
 
-          <button class="answer" id="send-data">Send Data</button>
-          <a href="archive.html">ARCHIVE</a>
+          <!-- <button class="answer" id="send-data">Send Data</button> -->
         </div>
-        <a class="intro-btn" id="showResult">Next</a>
+        <a class="next-btn" id="send-data">Finish</a>
+        <!-- <a href="archive.html">ARCHIVE</a> -->
       </div>
 
       <div class="line"></div>
 
       <div class="question-dx" id="question-img">
+        <p class="hidden question-text" id="result-text">
+          Congratulations!<br />This is your Inner Insects.
+        </p>
+
         <img src="assets/drawing/chest.png" id="drawing-1" class="drawing hide" />
         <img src="assets/drawing/butt.png" id="drawing-2" class="drawing hide" />
         <img src="assets/drawing/leg.png" id="drawing-3" class="drawing hide" />
         <img src="assets/drawing/head.png" id="drawing-4" class="drawing hide" />
         <img src="assets/drawing/ant.png" id="drawing-5" class="drawing hide" />
+
+        <div class="hidden" id="result-btns">
+          <a class="next-btn final-btn">Save it</a>
+          <a href="archive.html" class="next-btn final-btn">Archive</a>
+        </div>
       </div>
     </div>
   </body>

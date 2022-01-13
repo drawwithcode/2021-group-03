@@ -35,10 +35,6 @@ i {
   font-style: normal;
 }
 
-#send-data {
-  background-color: red;
-}
-
 input {
   margin: 10px;
 }
@@ -250,6 +246,10 @@ input:focus {
   opacity: 0;
   transition: 1s;
 }
+.hidden {
+  display: none;
+  position: absolute;
+}
 #askName {
   z-index: 2;
 }
@@ -385,4 +385,14 @@ input:focus {
 }
 #ant-img {
   z-index: 2;
+}
+#result-text {
+  top: 15%;
+}
+#result-btns {
+  bottom: 15%;
+  z-index: 9;
+}
+.final-btn {
+  margin: 0 20px 0 20px;
 }

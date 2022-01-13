@@ -5,6 +5,11 @@ let headX;
 let legX;
 let antX;
 
+//AUDIO
+
+//variable that will contain info about microphone
+let mic;
+
 let sketch_1 = function (p) {
   p.setup = function () {
     p.noCanvas();
@@ -128,6 +133,8 @@ let sketch_1 = function (p) {
       setTimeout(showQ2, 1500);
     }
 
+    //---------BUTT------------
+
     p.select("#showQ3").mousePressed(hideQ2);
     p.select("#showQ3").mousePressed(waitShowQ3);
 
@@ -167,8 +174,17 @@ let sketch_1 = function (p) {
     setLegM.mousePressed(leg_M);
     setLegB.mousePressed(leg_B);
 
+    function chosenLeg() {
+      p.createImg("assets/partsNew/leg/leg-" + legX + ".png")
+        .parent("question-img")
+        .addClass("drawing")
+        .addClass("hide")
+        .id("leg-img");
+    }
+
     p.select("#showQ4").mousePressed(hideQ3);
     p.select("#showQ4").mousePressed(waitShowQ4);
+    p.select("#showQ4").mousePressed(showChosenLeg);
 
     //Go to Question 4
 
@@ -176,6 +192,11 @@ let sketch_1 = function (p) {
       p.select("#question-3").style("opacity", "0");
       p.select("#drawing-3").style("opacity", "0");
     }
+    function showChosenLeg() {
+      chosenLeg();
+      p.select("#leg-img").style("opacity", "1");
+    }
+
     function showQ4() {
       p.select("#question-3").hide();
       p.select("#question-4").style("display", "flex");
@@ -183,7 +204,7 @@ let sketch_1 = function (p) {
       p.select("#drawing-4").style("opacity", "1");
     }
     function waitShowQ4() {
-      setTimeout(showQ4, 1000);
+      setTimeout(showQ4, 1500);
     }
 
     //---------HEAD------------
@@ -196,14 +217,27 @@ let sketch_1 = function (p) {
     setHeadM.mousePressed(head_M);
     setHeadB.mousePressed(head_B);
 
+    function chosenHead() {
+      p.createImg("assets/partsNew/head/head-" + headX + ".png")
+        .parent("question-img")
+        .addClass("drawing")
+        .addClass("hide")
+        .id("head-img");
+    }
+
     p.select("#showQ5").mousePressed(hideQ4);
     p.select("#showQ5").mousePressed(waitShowQ5);
+    p.select("#showQ5").mousePressed(showChosenHead);
 
     //Go to Question 5
 
     function hideQ4() {
       p.select("#question-4").style("opacity", "0");
       p.select("#drawing-4").style("opacity", "0");
+    }
+    function showChosenHead() {
+      chosenHead();
+      p.select("#head-img").style("opacity", "1");
     }
     function showQ5() {
       p.select("#question-4").hide();
@@ -212,7 +246,7 @@ let sketch_1 = function (p) {
       p.select("#drawing-5").style("opacity", "1");
     }
     function waitShowQ5() {
-      setTimeout(showQ5, 1000);
+      setTimeout(showQ5, 1500);
     }
 
     //---------ANT------------
@@ -220,6 +254,10 @@ let sketch_1 = function (p) {
     let setAntS = p.select("#ant-S");
     let setAntM = p.select("#ant-M");
     let setAntB = p.select("#ant-B");
+
+    setAntS.mousePressed(ant_S);
+    setAntM.mousePressed(ant_M);
+    setAntB.mousePressed(ant_B);
 
     let sendData = p.select("#send-data");
 
@@ -234,13 +272,32 @@ let sketch_1 = function (p) {
         ant: antX,
       };
       addUser(newUser);
+
+      chosenAnt();
+      p.select("#ant-img").style("opacity", "1");
+      p.select("#drawing-5").style("opacity", "0");
+      p.select("#question-5").style("opacity", "0");
+      p.select(".line").style("opacity", "0");
+
+      p.select("#question-5").style("width", "0px");
+      p.select("#question-5").style("padding", "0px");
+      p.select("#result-text").style("display", "flex");
+      p.select("#result-btns").style("display", "flex");
+      p.select(".question-text").style("width", "0px");
+      p.select(".answer").style("width", "0px");
+      p.select(".question-dx").style("width", "100%");
     }
 
-    setAntS.mousePressed(ant_S);
-    setAntM.mousePressed(ant_M);
-    setAntB.mousePressed(ant_B);
-
     sendData.mousePressed(send_data);
+    // sendData.mousePressed(showChosenAnt);
+
+    function chosenAnt() {
+      p.createImg("assets/partsNew/ant/ant-" + antX + ".png")
+        .parent("question-img")
+        .addClass("drawing")
+        .addClass("hide")
+        .id("ant-img");
+    }
 
     let today = new Date();
     let day = String(today.getDate()).padStart(2, "0");
@@ -264,7 +321,6 @@ let sketch_1 = function (p) {
     function leg_S() {
       let legS_List = ["S-1", "S-2", "S-3", "S-4"];
       legX = p.random(legS_List);
-      console.log(legX);
     }
     function leg_M() {
       let legM_List = ["M-1", "M-2", "M-3", "M-4", "M-5"];
@@ -320,7 +376,6 @@ let sketch_1 = function (p) {
         butt_B();
       }
     }
-    console.log(buttX);
     function butt_S() {
       let buttS_List = ["S-1", "S-2", "S-3", "S-4"];
       buttX = p.random(buttS_List);
@@ -336,4 +391,53 @@ let sketch_1 = function (p) {
   };
 };
 
+let sketch_Mouse = function (p) {
+  p.setup = function () {
+    let canvasMouse = p.createCanvas(400, 400);
+    canvasMouse.parent("question-3-canvas");
+    p.background("red");
+  };
+  p.draw = function () {};
+};
+
+let sketch_Webcam = function (p) {
+  p.setup = function () {
+    let canvasWebcam = p.createCanvas(400, 400);
+    canvasWebcam.parent("question-4-canvas");
+    p.background("green");
+  };
+  p.draw = function () {};
+};
+
+let sketch_Audio = function (p) {
+  p.setup = function () {
+    let canvasAudio = p.createCanvas(400, 400);
+    canvasAudio.parent("question-5-canvas");
+    canvasAudio.mousePressed(startAudio);
+  };
+  p.draw = function () {
+    p.background(255, 252, 241, 100);
+    if (mic) {
+      const micLevel = mic.getLevel();
+      let d = p.map(micLevel, 0, 1, 1, 350);
+
+      p.push();
+      p.strokeWeight(1);
+      p.stroke(173, 149, 127);
+      p.fill(255, 252, 241);
+      p.circle(200, 200, d);
+      p.pop();
+    }
+  };
+
+  function startAudio() {
+    p.userStartAudio();
+    mic = new p5.AudioIn();
+    mic.start();
+  }
+};
+
 let s1 = new p5(sketch_1);
+let s2 = new p5(sketch_Mouse);
+let s3 = new p5(sketch_Webcam);
+let s4 = new p5(sketch_Audio);
