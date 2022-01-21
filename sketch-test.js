@@ -5,9 +5,19 @@ let headX;
 let legX;
 let antX;
 
+//MOUSE
+
+let vel = 0;
+let contenitore = [];
+let media;
+let somma = 0;
+let indice = 0;
+let click = 0;
+let buttonMouse;
+let canvasMouse;
+
 //AUDIO
 
-//variable that will contain info about microphone
 let mic;
 
 let sketch_1 = function (p) {
@@ -113,6 +123,12 @@ let sketch_1 = function (p) {
     p.select("#showQ2").mousePressed(waitShowQ2);
     p.select("#showQ2").mousePressed(showChosenChest);
 
+    function showNextAfterButton() {
+      p.select("#showQ2").removeClass("hide");
+    }
+
+    p.select("#input-btns").mousePressed(showNextAfterButton);
+
     //Go to Question 2
 
     function hideQ1() {
@@ -172,13 +188,13 @@ let sketch_1 = function (p) {
 
     //---------LEG------------
 
-    let setLegS = p.select("#leg-S");
-    let setLegM = p.select("#leg-M");
-    let setLegB = p.select("#leg-B");
+    // let setLegS = p.select("#leg-S");
+    // let setLegM = p.select("#leg-M");
+    // let setLegB = p.select("#leg-B");
 
-    setLegS.mousePressed(leg_S);
-    setLegM.mousePressed(leg_M);
-    setLegB.mousePressed(leg_B);
+    // setLegS.mousePressed(leg_S);
+    // setLegM.mousePressed(leg_M);
+    // setLegB.mousePressed(leg_B);
 
     function chosenLeg() {
       p.createImg("assets/partsNew/leg/leg-" + legX + ".png")
@@ -324,19 +340,6 @@ let sketch_1 = function (p) {
       chestX = p.random(chestB_List);
     }
 
-    function leg_S() {
-      let legS_List = ["S-1", "S-2", "S-3", "S-4"];
-      legX = p.random(legS_List);
-    }
-    function leg_M() {
-      let legM_List = ["M-1", "M-2", "M-3", "M-4", "M-5"];
-      legX = p.random(legM_List);
-    }
-    function leg_B() {
-      let legB_List = ["B-1", "B-2", "B-3", "B-4", "B-5", "B-6", "B-7", "B-8"];
-      legX = p.random(legB_List);
-    }
-
     function head_S() {
       let headS_List = ["S-1", "S-2", "S-3", "S-4", "S-5", "S-6"];
       headX = p.random(headS_List);
@@ -397,14 +400,84 @@ let sketch_1 = function (p) {
   };
 };
 
+//MOUSE
+
 let sketch_Mouse = function (p) {
   p.setup = function () {
-    let canvasMouse = p.createCanvas(400, 400);
+    canvasMouse = p.createCanvas(400, 400);
     canvasMouse.parent("question-3-canvas");
     p.background("red");
+    buttonMouse = p.createButton("try again");
+    buttonMouse.mouseClicked(restartArray);
+    p.frameRate(10);
+
+    //funzione che resetta tutti i parametri
+    function restartArray() {
+      contenitore = [];
+      click = 0;
+      media = 0;
+      indice = 0;
+      somma = 0;
+    }
   };
-  p.draw = function () {};
+  p.draw = function () {
+    p.background("black");
+
+    //calcola la velocità del momento
+    let difX = p.abs(p.mouseX - p.pmouseX);
+    let difY = p.abs(p.mouseY - p.pmouseY);
+    let vel = difX + difY;
+
+    //se non è stata ancora data una risposta ossia quando il valore click è 0
+    if (click == 0) {
+      contenitore.push(vel);
+
+      somma = somma + contenitore[indice];
+      indice++;
+      // if (contenitore.length > 100) {
+      //   contenitore = [];
+      // }
+      media = p.floor(somma / contenitore.length);
+    }
+
+    p.fill("red");
+    let xCerchio = p.map(media, 0, 150, 0, 500, true);
+    p.ellipse(xCerchio, 120, 20);
+
+    //nel momento in cui si clicca viene mandato in console la risposta a seconda del valore di XCerchio
+    if (click == 1) {
+      if (xCerchio < 167) {
+        leg_S();
+      } else if (xCerchio > 167 && xCerchio < 333) {
+        leg_M();
+      } else if (xCerchio > 333) {
+        leg_B();
+      }
+    }
+
+    //nel momento in cui avviene un click dentro il canvas manda la funzione stopShake
+    canvasMouse.mouseClicked(stopShake);
+
+    function stopShake() {
+      click = 1;
+    }
+
+    function leg_S() {
+      let legS_List = ["S-1", "S-2", "S-3", "S-4"];
+      legX = p.random(legS_List);
+    }
+    function leg_M() {
+      let legM_List = ["M-1", "M-2", "M-3", "M-4", "M-5"];
+      legX = p.random(legM_List);
+    }
+    function leg_B() {
+      let legB_List = ["B-1", "B-2", "B-3", "B-4", "B-5", "B-6", "B-7", "B-8"];
+      legX = p.random(legB_List);
+    }
+  };
 };
+
+//WEBCAM
 
 let sketch_Webcam = function (p) {
   p.setup = function () {
@@ -414,6 +487,8 @@ let sketch_Webcam = function (p) {
   };
   p.draw = function () {};
 };
+
+//AUDIO
 
 let sketch_Audio = function (p) {
   p.setup = function () {

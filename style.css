@@ -242,10 +242,6 @@ input:focus {
   width: fit-content;
   cursor: pointer;
 }
-.hide {
-  opacity: 0;
-  transition: 1s;
-}
 .hidden {
   display: none;
   position: absolute;
@@ -397,4 +393,10 @@ input:focus {
 }
 .final-btn {
   margin: 0 20px 0 20px;
+}
+
+.hide {
+  opacity: 0;
+  transition: 1s;
+  cursor: default;
 }
