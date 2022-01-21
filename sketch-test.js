@@ -164,6 +164,12 @@ let sketch_1 = function (p) {
       setTimeout(showQ3, 1000);
     }
 
+    function showNextAfterSlider() {
+      p.select("#showQ3").removeClass("hide");
+    }
+
+    p.select("#q2-slider").mousePressed(showNextAfterSlider);
+
     //---------LEG------------
 
     let setLegS = p.select("#leg-S");
@@ -411,21 +417,29 @@ let sketch_Webcam = function (p) {
 
 let sketch_Audio = function (p) {
   p.setup = function () {
-    let canvasAudio = p.createCanvas(400, 400);
+    let canvasAudio = p.createCanvas(600, 600);
     canvasAudio.parent("question-5-canvas");
     canvasAudio.mousePressed(startAudio);
   };
   p.draw = function () {
     p.background(255, 252, 241, 100);
+    p.stroke(194, 176, 165);
+    p.strokeWeight(1);
+    p.line(295, 300, 600, 300);
+
+    p.line(300, 295, 300, 305);
+    p.line(400, 295, 400, 305);
+    p.line(500, 295, 500, 305);
+    p.line(599, 295, 599, 305);
+
     if (mic) {
       const micLevel = mic.getLevel();
-      let d = p.map(micLevel, 0, 1, 1, 350);
+      let d = p.map(micLevel, 0, 1, 1, 600);
 
       p.push();
-      p.strokeWeight(1);
       p.stroke(173, 149, 127);
-      p.fill(255, 252, 241);
-      p.circle(200, 200, d);
+      p.noFill();
+      p.circle(300, 300, d);
       p.pop();
     }
   };

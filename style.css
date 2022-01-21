@@ -328,6 +328,7 @@ input:focus {
   width: fit-content;
   cursor: pointer;
   margin-top: 60px;
+  transition: 1s;
 }
 .slider-container {
   width: 70%;
@@ -369,6 +370,7 @@ input:focus {
   color: #ac7857;
   margin-bottom: 40px;
   letter-spacing: 0.03em;
+  text-align: center;
 }
 
 #chest-img {
