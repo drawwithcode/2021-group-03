@@ -16,9 +16,27 @@ let click = 0;
 let buttonMouse;
 let canvasMouse;
 
+let century;
+
 //AUDIO
 
 let mic;
+let d;
+
+//WEBCAM
+
+let capture;
+var button;
+var bright;
+let fotoScattata = 0;
+
+//variabili altezza e larghezza della webcam
+let wCam = 640;
+let hCam = 480;
+
+//variabili altezza e larghezza del rettangolino
+let hRect = 20;
+let wRect = 640;
 
 let sketch_1 = function (p) {
   p.setup = function () {
@@ -231,13 +249,13 @@ let sketch_1 = function (p) {
 
     //---------HEAD------------
 
-    let setHeadS = p.select("#head-S");
-    let setHeadM = p.select("#head-M");
-    let setHeadB = p.select("#head-B");
+    // let setHeadS = p.select("#head-S");
+    // let setHeadM = p.select("#head-M");
+    // let setHeadB = p.select("#head-B");
 
-    setHeadS.mousePressed(head_S);
-    setHeadM.mousePressed(head_M);
-    setHeadB.mousePressed(head_B);
+    // setHeadS.mousePressed(head_S);
+    // setHeadM.mousePressed(head_M);
+    // setHeadB.mousePressed(head_B);
 
     function chosenHead() {
       p.createImg("assets/partsNew/head/head-" + headX + ".png")
@@ -273,17 +291,29 @@ let sketch_1 = function (p) {
 
     //---------ANT------------
 
-    let setAntS = p.select("#ant-S");
-    let setAntM = p.select("#ant-M");
-    let setAntB = p.select("#ant-B");
+    // let setAntS = p.select("#ant-S");
+    // let setAntM = p.select("#ant-M");
+    // let setAntB = p.select("#ant-B");
 
-    setAntS.mousePressed(ant_S);
-    setAntM.mousePressed(ant_M);
-    setAntB.mousePressed(ant_B);
+    // setAntS.mousePressed(ant_S);
+    // setAntM.mousePressed(ant_M);
+    // setAntB.mousePressed(ant_B);
 
     let sendData = p.select("#send-data");
 
+    function audioAnt() {
+      if (d <= 126) {
+        ant_S();
+      } else if (d < 126 && d <= 252) {
+        ant_M();
+      } else if (d > 252) {
+        ant_B();
+      }
+    }
+
     function send_data() {
+      audioAnt();
+
       const newUser = {
         name: nameX,
         date: today,
@@ -340,19 +370,6 @@ let sketch_1 = function (p) {
       chestX = p.random(chestB_List);
     }
 
-    function head_S() {
-      let headS_List = ["S-1", "S-2", "S-3", "S-4", "S-5", "S-6"];
-      headX = p.random(headS_List);
-    }
-    function head_M() {
-      let headM_List = ["M-1", "M-2", "M-3", "M-4", "M-5"];
-      headX = p.random(headM_List);
-    }
-    function head_B() {
-      let headB_List = ["B-1", "B-2", "B-3", "B-4", "B-5"];
-      headX = p.random(headB_List);
-    }
-
     function ant_S() {
       let antS_List = ["S-1", "S-2", "S-3", "S-4"];
       antX = p.random(antS_List);
@@ -404,10 +421,10 @@ let sketch_1 = function (p) {
 
 let sketch_Mouse = function (p) {
   p.setup = function () {
-    canvasMouse = p.createCanvas(400, 400);
+    canvasMouse = p.createCanvas(500, 500);
     canvasMouse.parent("question-3-canvas");
     p.background("red");
-    buttonMouse = p.createButton("try again");
+    buttonMouse = p.select("#mouse-btn");
     buttonMouse.mouseClicked(restartArray);
     p.frameRate(10);
 
@@ -419,9 +436,11 @@ let sketch_Mouse = function (p) {
       indice = 0;
       somma = 0;
     }
+
+    century = p.loadFont("assets/fonts/century-schoolbook/cen-schlbk-r.TTF");
   };
   p.draw = function () {
-    p.background("black");
+    p.background(255, 252, 241);
 
     //calcola la velocità del momento
     let difX = p.abs(p.mouseX - p.pmouseX);
@@ -440,12 +459,36 @@ let sketch_Mouse = function (p) {
       media = p.floor(somma / contenitore.length);
     }
 
-    p.fill("red");
-    let xCerchio = p.map(media, 0, 150, 0, 500, true);
-    p.ellipse(xCerchio, 120, 20);
+    //slider risposte
+    p.stroke(173, 149, 127);
+    p.fill(255, 252, 241);
+    p.line(20, 250, 480, 250);
+
+    p.line(20, 245, 20, 255);
+    p.line(173, 245, 173, 255);
+    p.line(326, 245, 326, 255);
+    p.line(480, 245, 480, 255);
+
+    p.push();
+    p.textFont(century);
+    p.textSize(18);
+    p.textAlign(p.CENTER);
+    p.fill("black");
+    p.noStroke();
+    p.text("Almost never", 96, 300);
+    p.text("Sometimes", 250, 300);
+    p.text("Often", 402, 300);
+    p.pop();
+
+    let xCerchio = p.map(media, 0, 150, 20, 480, true);
+
+    // p.ellipse(xCerchio, 250, 20);
+    p.triangle(xCerchio - 10, 230, xCerchio, 245, xCerchio + 10, 230);
 
     //nel momento in cui si clicca viene mandato in console la risposta a seconda del valore di XCerchio
     if (click == 1) {
+      p.select("#showQ4").removeClass("hide");
+      buttonMouse.removeClass("hide");
       if (xCerchio < 167) {
         leg_S();
       } else if (xCerchio > 167 && xCerchio < 333) {
@@ -474,6 +517,10 @@ let sketch_Mouse = function (p) {
       let legB_List = ["B-1", "B-2", "B-3", "B-4", "B-5", "B-6", "B-7", "B-8"];
       legX = p.random(legB_List);
     }
+
+    p.noFill();
+    p.stroke(173, 149, 127);
+    p.rect(0, 0, 500, 500);
   };
 };
 
@@ -481,11 +528,142 @@ let sketch_Mouse = function (p) {
 
 let sketch_Webcam = function (p) {
   p.setup = function () {
-    let canvasWebcam = p.createCanvas(400, 400);
+    let canvasWebcam = p.createCanvas(500, 560);
     canvasWebcam.parent("question-4-canvas");
-    p.background("green");
+
+    //webcam
+    video = p.createCapture(p.VIDEO);
+    video.size(wCam, hCam);
+    video.hide();
+
+    p.frameRate(10);
+
+    //button foto
+    // button = p.createButton("Answer");
+    button = p.select("#webcam-btn");
+    button.mousePressed(takesnap);
+
+    //funzione che scatta la foto
+    function takesnap() {
+      p.select("#showQ5").removeClass("hide");
+      if (fotoScattata == 0) {
+        //video.stop();
+        fotoScattata = 1;
+        //cambia la label del bottone
+        button.html("Try again");
+        //console.log(bright);
+      } else {
+        //video.play();
+        fotoScattata = 0;
+        //cambia la label del bottone
+        button.html("Stop");
+      }
+    }
   };
-  p.draw = function () {};
+
+  p.draw = function () {
+    p.background(255, 252, 241);
+
+    let gridSize = 10;
+
+    p.push();
+
+    p.translate(wCam, 0);
+    p.scale(-1, 1);
+
+    video.loadPixels();
+
+    //l'immagine che arriva da var video viene trasformato in una griglia di quadrati
+    for (let y = 0; y < video.height; y += gridSize) {
+      for (let x = 0; x < video.width; x += gridSize) {
+        let index = (y * video.width + x) * 4;
+
+        let r = video.pixels[index + 0];
+        let g = video.pixels[index + 1];
+        let b = video.pixels[index + 2];
+
+        //var bright prende la luminosità dei pixel e poi viene mappato
+        bright = (r + g + b) / 3;
+        let size = p.map(bright, 0, 255, gridSize, 1);
+
+        p.fill(0);
+        p.noStroke();
+        p.rect(x, y, size);
+      }
+    }
+
+    p.pop();
+
+    //la pallina si sposta a seconda della luminosita (var bright)
+    // p.push();
+    // p.translate(wCam, 0);
+    // p.scale(-1, 1);
+    var xPallina = p.map(bright, 0, 120, 20, 480, true);
+    // c = p.color(255, 0, 0);
+    // p.fill(c);
+    // p.ellipse(xPallina, 0, 20);
+    // p.pop();
+
+    //slider risposte
+    p.push();
+
+    p.stroke(173, 149, 127);
+    p.fill(255, 252, 241);
+
+    p.line(20, 520, 480, 520);
+
+    p.line(20, 515, 20, 525);
+    p.line(173, 515, 173, 525);
+    p.line(326, 515, 326, 525);
+    p.line(480, 515, 480, 525);
+
+    p.triangle(xPallina - 10, 500, xPallina, 515, xPallina + 10, 500);
+
+    p.textFont(century);
+    p.textSize(18);
+    p.textAlign(p.CENTER);
+    p.fill("black");
+    p.noStroke();
+    p.text("Almost never", 96, 560);
+    p.text("Sometimes", 250, 560);
+    p.text("Often", 402, 560);
+
+    p.pop();
+
+    //se viene scattata la foto da funzione takesnap il video si stoppa e manda in console SCURO/MEDIO/CHIARO se var fotoscattata è già
+    if (fotoScattata == 1) {
+      video.stop();
+      //fotoScattata = 1;
+      if (xPallina < 213) {
+        console.log("SCURO");
+        head_S();
+      }
+      if (xPallina > 213 && xPallina < 426) {
+        console.log("MEDIO");
+        head_M();
+      }
+      if (xPallina > 426) {
+        console.log("CHIARO");
+        head_B();
+      }
+    } else {
+      video.play();
+      //fotoScattata = 0;
+    }
+
+    function head_S() {
+      let headS_List = ["S-1", "S-2", "S-3", "S-4", "S-5", "S-6"];
+      headX = p.random(headS_List);
+    }
+    function head_M() {
+      let headM_List = ["M-1", "M-2", "M-3", "M-4", "M-5"];
+      headX = p.random(headM_List);
+    }
+    function head_B() {
+      let headB_List = ["B-1", "B-2", "B-3", "B-4", "B-5"];
+      headX = p.random(headB_List);
+    }
+  };
 };
 
 //AUDIO
@@ -500,21 +678,37 @@ let sketch_Audio = function (p) {
     p.background(255, 252, 241, 100);
     p.stroke(194, 176, 165);
     p.strokeWeight(1);
-    p.line(295, 300, 600, 300);
 
-    p.line(300, 295, 300, 305);
-    p.line(400, 295, 400, 305);
-    p.line(500, 295, 500, 305);
-    p.line(599, 295, 599, 305);
+    p.line(195, 300, 580, 300);
+
+    p.line(200, 295, 200, 305);
+    p.line(326, 295, 326, 305);
+    p.line(452, 295, 452, 305);
+    p.line(580, 295, 580, 305);
+
+    p.push();
+    p.noFill();
+    p.stroke(194, 176, 165);
+    p.rect(0, 0, 600, 600);
+    p.pop();
+
+    p.textFont(century);
+    p.textSize(18);
+    p.textAlign(p.CENTER);
+    p.fill("black");
+    p.noStroke();
+    p.text("Almost never", 263, 330);
+    p.text("Sometimes", 389, 330);
+    p.text("Often", 515, 330);
 
     if (mic) {
       const micLevel = mic.getLevel();
-      let d = p.map(micLevel, 0, 1, 1, 600);
+      d = p.map(micLevel, 0, 1, 1, 700);
 
       p.push();
       p.stroke(173, 149, 127);
       p.noFill();
-      p.circle(300, 300, d);
+      p.circle(200, 300, d);
       p.pop();
     }
   };

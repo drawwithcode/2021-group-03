@@ -364,9 +364,10 @@ input:focus {
   font-size: 18px;
   font-family: century-italic;
   color: #ac7857;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   letter-spacing: 0.03em;
   text-align: center;
+  margin-top: -30px;
 }
 
 #chest-img {
@@ -393,6 +394,19 @@ input:focus {
 }
 .final-btn {
   margin: 0 20px 0 20px;
+}
+#webcam-btn {
+  font-family: century-regular;
+  background-color: #fffcf1;
+  border: none;
+  border-bottom: 1px solid #c2b0a5;
+}
+#mouse-btn {
+  font-family: century-regular;
+  background-color: #fffcf1;
+  border: none;
+  border-bottom: 1px solid #c2b0a5;
+  margin-top: 24px;
 }
 
 .hide {
