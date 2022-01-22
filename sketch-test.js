@@ -358,11 +358,11 @@ let sketch_1 = function (p) {
     today = day + " / " + month + " / " + year;
 
     function chest_S() {
-      let chestS_List = ["S-1", "S-2", "S-3"];
+      let chestS_List = ["S-1", "S-2", "S-3", "S-4", "S-5", "S-6"];
       chestX = p.random(chestS_List);
     }
     function chest_M() {
-      let chestM_List = ["M-1", "M-2", "M-3", "M-4"];
+      let chestM_List = ["M-1", "M-2", "M-3", "M-4", "M-5"];
       chestX = p.random(chestM_List);
     }
     function chest_B() {
@@ -371,15 +371,28 @@ let sketch_1 = function (p) {
     }
 
     function ant_S() {
-      let antS_List = ["S-1", "S-2", "S-3", "S-4"];
+      let antS_List = ["S-1", "S-2", "S-3", "S-4", "S-5", "S-6"];
       antX = p.random(antS_List);
     }
     function ant_M() {
-      let antM_List = ["M-1", "M-2", "M-3", "M-4", "M-5", "M-6", "M-7", "M-8", "M-9", "M-10"];
+      let antM_List = [
+        "M-1",
+        "M-2",
+        "M-3",
+        "M-4",
+        "M-5",
+        "M-6",
+        "M-7",
+        "M-8",
+        "M-9",
+        "M-10",
+        "M-11",
+        "M-12",
+      ];
       antX = p.random(antM_List);
     }
     function ant_B() {
-      let antB_List = ["B-1", "B-2", "B-3", "B-4"];
+      let antB_List = ["B-1", "B-2", "B-3", "B-4", "B-5"];
       antX = p.random(antB_List);
     }
   };
@@ -403,11 +416,11 @@ let sketch_1 = function (p) {
       }
     }
     function butt_S() {
-      let buttS_List = ["S-1", "S-2", "S-3", "S-4"];
+      let buttS_List = ["S-1", "S-2", "S-3", "S-4", "S-5", "S-6"];
       buttX = p.random(buttS_List);
     }
     function butt_M() {
-      let buttM_List = ["M-1", "M-2", "M-3", "M-4", "M-5"];
+      let buttM_List = ["M-1", "M-2", "M-3", "M-4", "M-5", "M-6", "M-7"];
       buttX = p.random(buttM_List);
     }
     function butt_B() {
@@ -506,11 +519,11 @@ let sketch_Mouse = function (p) {
     }
 
     function leg_S() {
-      let legS_List = ["S-1", "S-2", "S-3", "S-4"];
+      let legS_List = ["S-1", "S-2", "S-3", "S-4", "S-5", "S-6"];
       legX = p.random(legS_List);
     }
     function leg_M() {
-      let legM_List = ["M-1", "M-2", "M-3", "M-4", "M-5"];
+      let legM_List = ["M-1", "M-2", "M-3", "M-4", "M-5", "M-6", "M-7"];
       legX = p.random(legM_List);
     }
     function leg_B() {
@@ -652,7 +665,7 @@ let sketch_Webcam = function (p) {
     }
 
     function head_S() {
-      let headS_List = ["S-1", "S-2", "S-3", "S-4", "S-5", "S-6"];
+      let headS_List = ["S-1", "S-2", "S-3", "S-4", "S-5", "S-6", "S-7", "S-8", "S-9"];
       headX = p.random(headS_List);
     }
     function head_M() {
