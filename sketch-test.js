@@ -329,15 +329,15 @@ let sketch_1 = function (p) {
       p.select("#ant-img").style("opacity", "1");
       p.select("#drawing-5").style("opacity", "0");
       p.select("#question-5").style("opacity", "0");
-      p.select(".line").style("opacity", "0");
+      p.select(".line").style("display", "none");
 
-      p.select("#question-5").style("width", "0px");
+      p.select("#question-5").style("width", "0");
       p.select("#question-5").style("padding", "0px");
       p.select("#result-text").style("display", "flex");
       p.select("#result-btns").style("display", "flex");
-      p.select(".question-text").style("width", "0px");
-      p.select(".answer").style("width", "0px");
-      p.select(".question-dx").style("width", "100%");
+      // p.select(".question-text").style("width", "0px");
+      // p.select(".answer").style("width", "0px");
+      p.select(".question-dx").style("width", "100vw");
     }
 
     sendData.mousePressed(send_data);
