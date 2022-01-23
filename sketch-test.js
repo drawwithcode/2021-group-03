@@ -22,6 +22,7 @@ let century;
 
 let mic;
 let d;
+let audioScelto = 0;
 
 //WEBCAM
 
@@ -29,14 +30,15 @@ let capture;
 var button;
 var bright;
 let fotoScattata = 0;
+let xPallina;
 
-//variabili altezza e larghezza della webcam
 let wCam = 640;
 let hCam = 480;
 
-//variabili altezza e larghezza del rettangolino
 let hRect = 20;
 let wRect = 640;
+
+////////////////// SKETCH 1 /////////////////
 
 let sketch_1 = function (p) {
   p.setup = function () {
@@ -193,6 +195,12 @@ let sketch_1 = function (p) {
       p.select("#drawing-3").style("opacity", "1");
       chosenButt();
       p.select("#butt-img").style("opacity", "1");
+      contenitore = [];
+      click = 0;
+      media = 0;
+      indice = 0;
+      somma = 0;
+      buttonMouse.addClass("hide");
     }
     function waitShowQ3() {
       setTimeout(showQ3, 1000);
@@ -205,14 +213,6 @@ let sketch_1 = function (p) {
     p.select("#q2-slider").mousePressed(showNextAfterSlider);
 
     //---------LEG------------
-
-    // let setLegS = p.select("#leg-S");
-    // let setLegM = p.select("#leg-M");
-    // let setLegB = p.select("#leg-B");
-
-    // setLegS.mousePressed(leg_S);
-    // setLegM.mousePressed(leg_M);
-    // setLegB.mousePressed(leg_B);
 
     function chosenLeg() {
       p.createImg("assets/partsNew/leg/leg-" + legX + ".png")
@@ -249,14 +249,6 @@ let sketch_1 = function (p) {
 
     //---------HEAD------------
 
-    // let setHeadS = p.select("#head-S");
-    // let setHeadM = p.select("#head-M");
-    // let setHeadB = p.select("#head-B");
-
-    // setHeadS.mousePressed(head_S);
-    // setHeadM.mousePressed(head_M);
-    // setHeadB.mousePressed(head_B);
-
     function chosenHead() {
       p.createImg("assets/partsNew/head/head-" + headX + ".png")
         .parent("question-img")
@@ -291,15 +283,10 @@ let sketch_1 = function (p) {
 
     //---------ANT------------
 
-    // let setAntS = p.select("#ant-S");
-    // let setAntM = p.select("#ant-M");
-    // let setAntB = p.select("#ant-B");
-
-    // setAntS.mousePressed(ant_S);
-    // setAntM.mousePressed(ant_M);
-    // setAntB.mousePressed(ant_B);
-
     let sendData = p.select("#send-data");
+
+    let stopAudioBtn = p.select("#stop-audio");
+    stopAudioBtn.mousePressed(stopAudio);
 
     function audioAnt() {
       if (d <= 126) {
@@ -311,9 +298,21 @@ let sketch_1 = function (p) {
       }
     }
 
-    function send_data() {
+    function stopAudio() {
       audioAnt();
+      p.select("#send-data").removeClass("hide");
+      if (audioScelto === 0) {
+        audioScelto = 1;
+        mic.stop();
+        stopAudioBtn.html("Try again");
+      } else if (audioScelto === 1) {
+        audioScelto = 0;
+        mic.start();
+        stopAudioBtn.html("Stop");
+      }
+    }
 
+    function send_data() {
       const newUser = {
         name: nameX,
         date: today,
@@ -416,11 +415,11 @@ let sketch_1 = function (p) {
       }
     }
     function butt_S() {
-      let buttS_List = ["S-1", "S-2", "S-3", "S-4", "S-5", "S-6"];
+      let buttS_List = ["S-1", "S-2", "S-3", "S-4"];
       buttX = p.random(buttS_List);
     }
     function butt_M() {
-      let buttM_List = ["M-1", "M-2", "M-3", "M-4", "M-5", "M-6", "M-7"];
+      let buttM_List = ["M-1", "M-2", "M-3", "M-4", "M-5", "M-6", "M-7", "M-8", "M-9"];
       buttX = p.random(buttM_List);
     }
     function butt_B() {
@@ -441,13 +440,14 @@ let sketch_Mouse = function (p) {
     buttonMouse.mouseClicked(restartArray);
     p.frameRate(10);
 
-    //funzione che resetta tutti i parametri
+    //funzione che resetta mouse shake
     function restartArray() {
       contenitore = [];
       click = 0;
       media = 0;
       indice = 0;
       somma = 0;
+      buttonMouse.addClass("hide");
     }
 
     century = p.loadFont("assets/fonts/century-schoolbook/cen-schlbk-r.TTF");
@@ -571,6 +571,26 @@ let sketch_Webcam = function (p) {
         //cambia la label del bottone
         button.html("Stop");
       }
+      if (xPallina < 213) {
+        head_S();
+      } else if (xPallina > 213 && xPallina < 426) {
+        head_M();
+      } else if (xPallina > 426) {
+        head_B();
+      }
+    }
+
+    function head_S() {
+      let headS_List = ["S-1", "S-2", "S-3", "S-4", "S-5", "S-6", "S-7", "S-8", "S-9"];
+      headX = p.random(headS_List);
+    }
+    function head_M() {
+      let headM_List = ["M-1", "M-2", "M-3", "M-4", "M-5"];
+      headX = p.random(headM_List);
+    }
+    function head_B() {
+      let headB_List = ["B-1", "B-2", "B-3", "B-4", "B-5"];
+      headX = p.random(headB_List);
     }
   };
 
@@ -611,7 +631,7 @@ let sketch_Webcam = function (p) {
     // p.push();
     // p.translate(wCam, 0);
     // p.scale(-1, 1);
-    var xPallina = p.map(bright, 0, 120, 20, 480, true);
+    xPallina = p.map(bright, 0, 120, 20, 480, true);
     // c = p.color(255, 0, 0);
     // p.fill(c);
     // p.ellipse(xPallina, 0, 20);
@@ -643,38 +663,13 @@ let sketch_Webcam = function (p) {
 
     p.pop();
 
-    //se viene scattata la foto da funzione takesnap il video si stoppa e manda in console SCURO/MEDIO/CHIARO se var fotoscattata è già
+    //se viene scattata la foto da funzione takesnap il video si stoppa
     if (fotoScattata == 1) {
       video.stop();
       //fotoScattata = 1;
-      if (xPallina < 213) {
-        console.log("SCURO");
-        head_S();
-      }
-      if (xPallina > 213 && xPallina < 426) {
-        console.log("MEDIO");
-        head_M();
-      }
-      if (xPallina > 426) {
-        console.log("CHIARO");
-        head_B();
-      }
     } else {
       video.play();
       //fotoScattata = 0;
-    }
-
-    function head_S() {
-      let headS_List = ["S-1", "S-2", "S-3", "S-4", "S-5", "S-6", "S-7", "S-8", "S-9"];
-      headX = p.random(headS_List);
-    }
-    function head_M() {
-      let headM_List = ["M-1", "M-2", "M-3", "M-4", "M-5"];
-      headX = p.random(headM_List);
-    }
-    function head_B() {
-      let headB_List = ["B-1", "B-2", "B-3", "B-4", "B-5"];
-      headX = p.random(headB_List);
     }
   };
 };
@@ -683,7 +678,7 @@ let sketch_Webcam = function (p) {
 
 let sketch_Audio = function (p) {
   p.setup = function () {
-    let canvasAudio = p.createCanvas(600, 600);
+    let canvasAudio = p.createCanvas(600, 400);
     canvasAudio.parent("question-5-canvas");
     canvasAudio.mousePressed(startAudio);
   };
@@ -692,17 +687,17 @@ let sketch_Audio = function (p) {
     p.stroke(194, 176, 165);
     p.strokeWeight(1);
 
-    p.line(195, 300, 580, 300);
+    p.line(195, 200, 580, 200);
 
-    p.line(200, 295, 200, 305);
-    p.line(326, 295, 326, 305);
-    p.line(452, 295, 452, 305);
-    p.line(580, 295, 580, 305);
+    p.line(200, 195, 200, 205);
+    p.line(326, 195, 326, 205);
+    p.line(452, 195, 452, 205);
+    p.line(580, 195, 580, 205);
 
     p.push();
     p.noFill();
     p.stroke(194, 176, 165);
-    p.rect(0, 0, 600, 600);
+    p.rect(0, 0, 600, 400);
     p.pop();
 
     p.textFont(century);
@@ -710,9 +705,9 @@ let sketch_Audio = function (p) {
     p.textAlign(p.CENTER);
     p.fill("black");
     p.noStroke();
-    p.text("Almost never", 263, 330);
-    p.text("Sometimes", 389, 330);
-    p.text("Often", 515, 330);
+    p.text("Almost never", 263, 230);
+    p.text("Sometimes", 389, 230);
+    p.text("Often", 515, 230);
 
     if (mic) {
       const micLevel = mic.getLevel();
@@ -721,7 +716,7 @@ let sketch_Audio = function (p) {
       p.push();
       p.stroke(173, 149, 127);
       p.noFill();
-      p.circle(200, 300, d);
+      p.circle(200, 200, d);
       p.pop();
     }
   };
@@ -730,6 +725,7 @@ let sketch_Audio = function (p) {
     p.userStartAudio();
     mic = new p5.AudioIn();
     mic.start();
+    p.select("#stop-audio").removeClass("hide");
   }
 };
 
