@@ -24,13 +24,33 @@ function setup() {
   noCanvas();
 }
 
+function draw() {
+  background(255, 252, 241);
+
+  displayInsects();
+
+  select("#dd").mousePressed(DateDesc);
+  select("#sort-list").mousePressed(DateAsc);
+}
+
+function DateDesc() {
+  console.log("culo");
+  sortDataCresc = 0;
+  sortDataDecresc = 1;
+  displayInsects();
+}
+function DateAsc() {
+  console.log("cacca");
+  sortDataCresc = 1;
+  sortDataDecresc = 0;
+  displayInsects();
+}
+
 function compareNameAB(a, b) {
   return a.name - b.name;
 }
 
-function draw() {
-  background(255, 252, 241);
-
+function displayInsects() {
   if (InsectsArray) {
     //SORT NAME
     if (sortNameCresc) {
@@ -152,7 +172,6 @@ function draw() {
     }
 
     //SHOW THE INSECT ARRAY
-
     for (let i = InsectsArray.length - 1; i >= 0; i--) {
       let box = createDiv()
         .id("box-" + i)
@@ -189,6 +208,21 @@ function draw() {
       let date = createElement("p", InsectsArray[i].date).parent(box).addClass("date");
     }
   }
+}
 
-  //console.log(InsectsArray);
+function sortByDateCresc() {
+  sortDataCresc = 1;
+  sortDataDecresc = 0;
+}
+function sortByDateDecresc() {
+  sortDataCresc = 0;
+  sortDataDecresc = 1;
+}
+function sortByNameCresc() {
+  sortNameCresc = 1;
+  sortNameDecresc = 0;
+}
+function sortByNameDecresc() {
+  sortNameCresc = 0;
+  sortNameDecresc = 1;
 }

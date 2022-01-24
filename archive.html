@@ -20,10 +20,15 @@
         <div>
           <label for="sorting">Sort by</label>
           <select name="sorting" id="sort-list">
-            <option value="date">Date</option>
-            <option value="name">Name</option>
-            <option value="type">Type</option>
+            <option value="date" id="dd">Date Desc.</option>
+            <option value="date" id="da">Date Asc.</option>
+            <option value="name" id="n">Name</option>
+            <option value="size" id="s">Size</option>
           </select>
+          <!-- <select name="sorting" id="sort-order">
+            <option value="desc" id="desc">Descending</option>
+            <option value="asc" id="asc">Ascending</option>
+          </select> -->
         </div>
         <div class="navbar-right">
           <a class="navbar-btn" id="begin-btn" href="test.html">START</a>
@@ -36,6 +41,6 @@
 
     <div id="archive-container"></div>
     <script src="firebase-setup.js"></script>
-    <script src="sketch-archive.js"></script>
+    <script src="sketch-archive-2.js"></script>
   </body>
 </html>
