@@ -32,8 +32,8 @@ var bright;
 let fotoScattata = 0;
 let xPallina;
 
-let wCam = 640;
-let hCam = 480;
+let wCam;
+let hCam;
 
 let hRect = 20;
 let wRect = 640;
@@ -433,7 +433,7 @@ let sketch_1 = function (p) {
 
 let sketch_Mouse = function (p) {
   p.setup = function () {
-    canvasMouse = p.createCanvas(500, 500);
+    canvasMouse = p.createCanvas(p.windowWidth / 3, p.windowHeight / 2);
     canvasMouse.parent("question-3-canvas");
     p.background("red");
     buttonMouse = p.select("#mouse-btn");
@@ -475,12 +475,18 @@ let sketch_Mouse = function (p) {
     //slider risposte
     p.stroke(173, 149, 127);
     p.fill(255, 252, 241);
-    p.line(20, 250, 480, 250);
 
-    p.line(20, 245, 20, 255);
-    p.line(173, 245, 173, 255);
-    p.line(326, 245, 326, 255);
-    p.line(480, 245, 480, 255);
+    p.line(20, p.height / 2, p.width - 20, p.height / 2);
+
+    p.line(20, p.height / 2 - 5, 20, p.height / 2 + 5);
+    p.line((p.width - 40) / 3 + 20, p.height / 2 - 5, (p.width - 40) / 3 + 20, p.height / 2 + 5);
+    p.line(
+      ((p.width - 40) / 3) * 2 + 20,
+      p.height / 2 - 5,
+      ((p.width - 40) / 3) * 2 + 20,
+      p.height / 2 + 5
+    );
+    p.line(p.width - 20, p.height / 2 - 5, p.width - 20, p.height / 2 + 5);
 
     p.push();
     p.textFont(century);
@@ -488,15 +494,22 @@ let sketch_Mouse = function (p) {
     p.textAlign(p.CENTER);
     p.fill("black");
     p.noStroke();
-    p.text("Almost never", 96, 300);
-    p.text("Sometimes", 250, 300);
-    p.text("Often", 402, 300);
+    p.text("Almost never", (p.width - 40) / 6 + 20, p.height / 2 + 50);
+    p.text("Sometimes", p.width / 2, p.height / 2 + 50);
+    p.text("Often", ((p.width - 40) / 6) * 5 + 20, p.height / 2 + 50);
     p.pop();
 
-    let xCerchio = p.map(media, 0, 150, 20, 480, true);
+    let xCerchio = p.map(media, 0, 150, 20, p.width - 20, true);
 
     // p.ellipse(xCerchio, 250, 20);
-    p.triangle(xCerchio - 10, 230, xCerchio, 245, xCerchio + 10, 230);
+    p.triangle(
+      xCerchio - 10,
+      p.height / 2 - 20,
+      xCerchio,
+      p.height / 2 - 5,
+      xCerchio + 10,
+      p.height / 2 - 20
+    );
 
     //nel momento in cui si clicca viene mandato in console la risposta a seconda del valore di XCerchio
     if (click == 1) {
@@ -533,7 +546,7 @@ let sketch_Mouse = function (p) {
 
     p.noFill();
     p.stroke(173, 149, 127);
-    p.rect(0, 0, 500, 500);
+    p.rect(0, 0, p.windowWidth / 3, p.windowHeight / 2 - 1);
   };
 };
 
@@ -541,8 +554,11 @@ let sketch_Mouse = function (p) {
 
 let sketch_Webcam = function (p) {
   p.setup = function () {
-    let canvasWebcam = p.createCanvas(500, 560);
+    let canvasWebcam = p.createCanvas(p.windowWidth / 3, p.windowHeight / 2 + 60);
     canvasWebcam.parent("question-4-canvas");
+
+    wCam = p.windowWidth / 3;
+    hCam = p.windowHeight / 2 - 10;
 
     //webcam
     video = p.createCapture(p.VIDEO);
@@ -631,7 +647,7 @@ let sketch_Webcam = function (p) {
     // p.push();
     // p.translate(wCam, 0);
     // p.scale(-1, 1);
-    xPallina = p.map(bright, 0, 120, 20, 480, true);
+    xPallina = p.map(bright, 0, 120, 0, p.width, true);
     // c = p.color(255, 0, 0);
     // p.fill(c);
     // p.ellipse(xPallina, 0, 20);
@@ -643,23 +659,23 @@ let sketch_Webcam = function (p) {
     p.stroke(173, 149, 127);
     p.fill(255, 252, 241);
 
-    p.line(20, 520, 480, 520);
+    p.line(0, p.height - 25, p.width, p.height - 25);
 
-    p.line(20, 515, 20, 525);
-    p.line(173, 515, 173, 525);
-    p.line(326, 515, 326, 525);
-    p.line(480, 515, 480, 525);
+    p.line(1, p.height - 30, 1, p.height - 20);
+    p.line(p.width / 3, p.height - 30, p.width / 3, p.height - 20);
+    p.line((p.width / 3) * 2, p.height - 30, (p.width / 3) * 2, p.height - 20);
+    p.line(p.width - 1, p.height - 30, p.width - 1, p.height - 20);
 
-    p.triangle(xPallina - 10, 500, xPallina, 515, xPallina + 10, 500);
+    p.triangle(xPallina - 10, p.height - 45, xPallina, p.height - 30, xPallina + 10, p.height - 45);
 
     p.textFont(century);
     p.textSize(18);
     p.textAlign(p.CENTER);
     p.fill("black");
     p.noStroke();
-    p.text("Almost never", 96, 560);
-    p.text("Sometimes", 250, 560);
-    p.text("Often", 402, 560);
+    p.text("Almost never", p.width / 6, p.height);
+    p.text("Sometimes", p.width / 2, p.height);
+    p.text("Often", (p.width / 6) * 5, p.height);
 
     p.pop();
 
