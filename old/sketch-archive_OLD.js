@@ -24,33 +24,13 @@ function setup() {
   noCanvas();
 }
 
-function draw() {
-  background(255, 252, 241);
-
-  displayInsects();
-
-  select("#dd").mousePressed(DateDesc);
-  select("#sort-list").mousePressed(DateAsc);
-}
-
-function DateDesc() {
-  console.log("culo");
-  sortDataCresc = 0;
-  sortDataDecresc = 1;
-  displayInsects();
-}
-function DateAsc() {
-  console.log("cacca");
-  sortDataCresc = 1;
-  sortDataDecresc = 0;
-  displayInsects();
-}
-
 function compareNameAB(a, b) {
   return a.name - b.name;
 }
 
-function displayInsects() {
+function draw() {
+  background(255, 252, 241);
+
   if (InsectsArray) {
     //SORT NAME
     if (sortNameCresc) {
@@ -172,6 +152,7 @@ function displayInsects() {
     }
 
     //SHOW THE INSECT ARRAY
+
     for (let i = InsectsArray.length - 1; i >= 0; i--) {
       let box = createDiv()
         .id("box-" + i)
@@ -208,21 +189,45 @@ function displayInsects() {
       let date = createElement("p", InsectsArray[i].date).parent(box).addClass("date");
     }
   }
+
+  let tendina1 = select("#sort-list");
+  let tendina2 = select("#sort-order");
+
+  select("#asc").mousePressed(sortByDateCresc);
+
+  if ((tendina1.value = "date")) {
+    if ((tendina2.value = "desc")) {
+      sortDataCresc = 0;
+      sortDataDecresc = 1;
+    } else if ((tendina2.value = "asc")) {
+      sortDataCresc = 1;
+      sortDataDecresc = 0;
+      redraw();
+    }
+  }
+
+  console.log(tendina1.value);
+  // console.log(sortDataDecresc);
+  // console.log(tendina2.value);
 }
 
 function sortByDateCresc() {
   sortDataCresc = 1;
   sortDataDecresc = 0;
+  // redraw();
 }
 function sortByDateDecresc() {
   sortDataCresc = 0;
   sortDataDecresc = 1;
+  // redraw();
 }
 function sortByNameCresc() {
   sortNameCresc = 1;
   sortNameDecresc = 0;
+  // redraw();
 }
 function sortByNameDecresc() {
   sortNameCresc = 0;
   sortNameDecresc = 1;
+  // redraw();
 }

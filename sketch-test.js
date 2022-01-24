@@ -315,12 +315,13 @@ let sketch_1 = function (p) {
     function send_data() {
       const newUser = {
         name: nameX,
-        date: today,
         chest: chestX,
         butt: buttX,
         leg: legX,
         head: headX,
         ant: antX,
+        date: today,
+        time: time,
       };
       addUser(newUser);
 
@@ -351,10 +352,17 @@ let sketch_1 = function (p) {
     }
 
     let today = new Date();
+
     let day = String(today.getDate()).padStart(2, "0");
     let month = String(today.getMonth() + 1).padStart(2, "0");
     let year = today.getFullYear();
+
+    let hour = String(today.getHours());
+    let minutes = String(today.getMinutes());
+
     today = day + " / " + month + " / " + year;
+
+    let time = hour + ":" + minutes;
 
     function chest_S() {
       let chestS_List = ["S-1", "S-2", "S-3", "S-4", "S-5", "S-6"];
