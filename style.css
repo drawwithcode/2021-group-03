@@ -278,7 +278,7 @@ input:focus {
   margin-top: 80px;
 }
 .drawing {
-  width: 400px;
+  width: 20%;
   position: absolute;
 }
 
@@ -312,7 +312,7 @@ input:focus {
   flex-direction: column;
 }
 .question-text {
-  font-size: 22px;
+  font-size: 21px;
   margin-bottom: 60px;
   text-align: center;
   letter-spacing: 0.01em;
@@ -328,6 +328,7 @@ input:focus {
 }
 .slider-container {
   width: 70%;
+  margin-top: 10%;
 }
 .slider {
   width: 100%;
@@ -401,6 +402,7 @@ input:focus {
   background-color: #fffcf1;
   border: none;
   border-bottom: 1px solid #c2b0a5;
+  margin-top: 40px;
 }
 #mouse-btn {
   font-family: century-regular;
@@ -426,6 +428,10 @@ input:focus {
 }
 #showQ5 {
   margin-top: 30px;
+}
+#test-body {
+  height: 100vh;
+  overflow-y: hidden;
 }
 
 .hide {
