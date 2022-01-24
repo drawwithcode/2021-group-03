@@ -101,6 +101,12 @@ let sketch_1 = function (p) {
       nameX = inputName.value();
     }
 
+    function showFirstButton() {
+      p.select("#send-name").removeClass("hide");
+    }
+
+    p.select("#input-name").mousePressed(showFirstButton);
+
     sendName.mousePressed(send_name);
 
     //Go to Question 1
