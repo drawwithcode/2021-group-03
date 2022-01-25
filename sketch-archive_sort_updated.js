@@ -42,7 +42,11 @@ function draw() {
       InsectsArray.sort(function (a, b) {
         if (b.date < a.date) return -1;
         if (b.date > a.date) return 1;
-        return 0;
+        if (b.date == a.date) {
+          if (b.time < a.time) return -1;
+          if (b.time > a.time) return 1;
+          return 0;
+        }
       });
     }
 
@@ -50,7 +54,11 @@ function draw() {
       InsectsArray.sort(function (a, b) {
         if (a.date < b.date) return -1;
         if (a.date > b.date) return 1;
-        return 0;
+        if (a.date == b.date) {
+          if (a.time < b.time) return -1;
+          if (a.time > b.time) return 1;
+          return 0;
+        }
       });
     }
 
