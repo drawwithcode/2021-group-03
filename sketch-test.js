@@ -5,6 +5,15 @@ let headX;
 let legX;
 let antX;
 
+let clockSound;
+
+let insectSound1;
+let insectSound2;
+let insectSound3;
+let insectSound4;
+let insectSound5;
+let insectSounds = [];
+
 //MOUSE
 
 let vel = 0;
@@ -43,6 +52,16 @@ let wRect = 640;
 let sketch_1 = function (p) {
   p.setup = function () {
     p.noCanvas();
+
+    clockSound = p.loadSound("assets/sound/clock.mp3");
+
+    insectSound1 = p.loadSound("assets/sound/insect-1.mp3");
+    insectSound2 = p.loadSound("assets/sound/insect-2.mp3");
+    insectSound3 = p.loadSound("assets/sound/insect-3.mp3");
+    insectSound4 = p.loadSound("assets/sound/insect-4.mp3");
+    insectSound5 = p.loadSound("assets/sound/insect-5.mp3");
+
+    insectSounds.push(insectSound1, insectSound2, insectSound3, insectSound4, insectSound5);
 
     //TRANSITIONS FUNCTIONS
 
@@ -96,6 +115,15 @@ let sketch_1 = function (p) {
 
     let inputName = p.select("#input-name");
     let sendName = p.select("#send-name");
+
+    inputName.mouseClicked(playMusic);
+
+    function playMusic() {
+      if (clockSound.isPlaying() == false) {
+        clockSound.loop();
+        clockSound.setVolume(0.15, [1000]);
+      }
+    }
 
     function send_name() {
       nameX = inputName.value();
@@ -319,6 +347,8 @@ let sketch_1 = function (p) {
     }
 
     function send_data() {
+      clockSound.stop();
+
       const newUser = {
         name: nameX,
         chest: chestX,
@@ -341,13 +371,12 @@ let sketch_1 = function (p) {
       p.select("#question-5").style("padding", "0px");
       p.select("#result-text").style("display", "flex");
       p.select("#result-btns").style("display", "flex");
-      // p.select(".question-text").style("width", "0px");
-      // p.select(".answer").style("width", "0px");
       p.select(".question-dx").style("width", "100vw");
+
+      p.random(insectSounds).play();
     }
 
     sendData.mousePressed(send_data);
-    // sendData.mousePressed(showChosenAnt);
 
     function chosenAnt() {
       p.createImg("assets/partsNew/ant/ant-" + antX + ".png")
@@ -375,16 +404,29 @@ let sketch_1 = function (p) {
       chestX = p.random(chestS_List);
     }
     function chest_M() {
-      let chestM_List = ["M-1", "M-2", "M-3", "M-4", "M-5"];
+      let chestM_List = ["M-1", "M-2", "M-3", "M-4", "M-5", "M-6", "M-7"];
       chestX = p.random(chestM_List);
     }
     function chest_B() {
-      let chestB_List = ["B-1", "B-2", "B-3", "B-4", "B-5", "B-6", "B-7", "B-8", "B-9"];
+      let chestB_List = [
+        "B-1",
+        "B-2",
+        "B-3",
+        "B-4",
+        "B-5",
+        "B-6",
+        "B-7",
+        "B-8",
+        "B-9",
+        "B-10",
+        "B-11",
+        "B-12",
+      ];
       chestX = p.random(chestB_List);
     }
 
     function ant_S() {
-      let antS_List = ["S-1", "S-2", "S-3", "S-4", "S-5", "S-6"];
+      let antS_List = ["S-1", "S-2", "S-3", "S-4", "S-5", "S-6", "S-7", "S-8"];
       antX = p.random(antS_List);
     }
     function ant_M() {
@@ -405,7 +447,7 @@ let sketch_1 = function (p) {
       antX = p.random(antM_List);
     }
     function ant_B() {
-      let antB_List = ["B-1", "B-2", "B-3", "B-4", "B-5"];
+      let antB_List = ["B-1", "B-2", "B-3", "B-4", "B-5", "B-6", "B-7"];
       antX = p.random(antB_List);
     }
   };
@@ -417,7 +459,6 @@ let sketch_1 = function (p) {
     let setButt = p.select("#q2-slider");
 
     setButt.mouseReleased(sliderQ2);
-    // setButt.mousePressed(chosenButt);
 
     function sliderQ2() {
       if (q2Value <= 33) {
@@ -429,15 +470,15 @@ let sketch_1 = function (p) {
       }
     }
     function butt_S() {
-      let buttS_List = ["S-1", "S-2", "S-3", "S-4"];
+      let buttS_List = ["S-1", "S-2", "S-3", "S-4", "S-5", "S-6", "S-7"];
       buttX = p.random(buttS_List);
     }
     function butt_M() {
-      let buttM_List = ["M-1", "M-2", "M-3", "M-4", "M-5", "M-6", "M-7", "M-8", "M-9"];
+      let buttM_List = ["M-1", "M-2", "M-3", "M-4", "M-5", "M-6", "M-7", "M-8", "M-9", "M-10"];
       buttX = p.random(buttM_List);
     }
     function butt_B() {
-      let buttB_List = ["B-1", "B-2", "B-3", "B-4", "B-5", "B-6", "B-7"];
+      let buttB_List = ["B-1", "B-2", "B-3", "B-4", "B-5", "B-6", "B-7", "B-8", "B-9"];
       buttX = p.random(buttB_List);
     }
   };
@@ -546,15 +587,15 @@ let sketch_Mouse = function (p) {
     }
 
     function leg_S() {
-      let legS_List = ["S-1", "S-2", "S-3", "S-4", "S-5", "S-6"];
+      let legS_List = ["S-1", "S-2", "S-3", "S-4", "S-5", "S-6", "S-7", "S-8"];
       legX = p.random(legS_List);
     }
     function leg_M() {
-      let legM_List = ["M-1", "M-2", "M-3", "M-4", "M-5", "M-6", "M-7"];
+      let legM_List = ["M-1", "M-2", "M-3", "M-4", "M-5", "M-6", "M-7", "M-8", "M-9"];
       legX = p.random(legM_List);
     }
     function leg_B() {
-      let legB_List = ["B-1", "B-2", "B-3", "B-4", "B-5", "B-6", "B-7", "B-8"];
+      let legB_List = ["B-1", "B-2", "B-3", "B-4", "B-5", "B-6", "B-7", "B-8", "B-9"];
       legX = p.random(legB_List);
     }
 
@@ -611,7 +652,20 @@ let sketch_Webcam = function (p) {
     }
 
     function head_S() {
-      let headS_List = ["S-1", "S-2", "S-3", "S-4", "S-5", "S-6", "S-7", "S-8", "S-9"];
+      let headS_List = [
+        "S-1",
+        "S-2",
+        "S-3",
+        "S-4",
+        "S-5",
+        "S-6",
+        "S-7",
+        "S-8",
+        "S-9",
+        "S-10",
+        "S-11",
+        "S-12",
+      ];
       headX = p.random(headS_List);
     }
     function head_M() {
@@ -619,7 +673,7 @@ let sketch_Webcam = function (p) {
       headX = p.random(headM_List);
     }
     function head_B() {
-      let headB_List = ["B-1", "B-2", "B-3", "B-4", "B-5"];
+      let headB_List = ["B-1", "B-2", "B-3", "B-4", "B-5", "B-6"];
       headX = p.random(headB_List);
     }
   };
@@ -687,9 +741,9 @@ let sketch_Webcam = function (p) {
     p.textAlign(p.CENTER);
     p.fill("black");
     p.noStroke();
-    p.text("Almost never", p.width / 6, p.height);
+    p.text("No", p.width / 6, p.height);
     p.text("Sometimes", p.width / 2, p.height);
-    p.text("Often", (p.width / 6) * 5, p.height);
+    p.text("Yes", (p.width / 6) * 5, p.height);
 
     p.pop();
 
