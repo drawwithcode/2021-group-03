@@ -4,24 +4,8 @@ let sortDataDecresc = 0;
 let sortNameCresc = 0;
 let sortNameDecresc = 0;
 
-let sortSizeCresc = 0;
-let sortSizeDecresc = 1;
-
-//TYPE
-// let sortAntCresc = 0;
-// let sortAntDecresc = 0;
-
-// let sortButtCresc = 0;
-// let sortButtDecresc = 0;
-
-// let sortChestCresc = 0;
-// let sortChestDecresc = 0;
-
-// let sortHeadCresc = 0;
-// let sortHeadDecresc = 0;
-
-// let sortLegCresc = 0;
-// let sortLegDecresc = 0;
+let sortSizeCresc = 1;
+let sortSizeDecresc = 0;
 
 function setup() {
   //   createCanvas(windowWidth, windowHeight);
@@ -73,148 +57,61 @@ function draw() {
     //SORT SIZE
     if (sortSizeCresc) {
       InsectsArray.sort(function (a, b) {
-        if (a.butt < b.butt) return -1;
-        if (a.butt > b.butt) return 1;
-        if (a.butt == b.butt) {
-          if (a.head < b.head) return -1;
-          if (a.head > b.head) return 1;
-          return 0;
+        //BUTT
+        if (a.butt[0] < b.butt[0]) return -1;
+        if (a.butt[0] > b.butt[0]) return 1;
+        if (a.butt[0] == b.butt[0]) {
+          //LEG
+          if (a.leg[0] < b.leg[0]) return -1;
+          if (a.leg[0] > b.leg[0]) return 1;
+          if (a.leg[0] == b.leg[0]) {
+            //HEAD
+            if (a.head[0] < b.head[0]) return -1;
+            if (a.head[0] > b.head[0]) return 1;
+            if (a.head[0] == b.head[0]) {
+              //ANT
+              if (a.ant[0] < b.ant[0]) return -1;
+              if (a.ant[0] > b.ant[0]) return 1;
+              if (a.ant[0] == b.ant[0]) {
+                //ANT
+                if (a.chest[0] < b.chest[0]) return -1;
+                if (a.chest[0] > b.chest[0]) return 1;
+                return 0;
+              }
+            }
+          }
         }
       });
     }
 
     if (sortSizeDecresc) {
       InsectsArray.sort(function (a, b) {
-        if (b.butt < a.butt) return -1;
-        if (b.butt > a.butt) return 1;
-        if (b.butt == a.butt) {
-          if (b.head < a.head) return -1;
-          if (b.head > a.head) return 1;
-          return 0;
+        //BUTT
+        if (b.butt[0] < a.butt[0]) return -1;
+        if (b.butt[0] > a.butt[0]) return 1;
+        if (b.butt[0] == a.butt[0]) {
+          //LEG
+          if (b.leg[0] < a.leg[0]) return -1;
+          if (b.leg[0] > a.leg[0]) return 1;
+          if (b.leg[0] == a.leg[0]) {
+            //HEAD
+            if (b.head[0] < a.head[0]) return -1;
+            if (b.head[0] > a.head[0]) return 1;
+            if (b.head[0] == a.head[0]) {
+              //ANT
+              if (b.ant[0] < a.ant[0]) return -1;
+              if (b.ant[0] > a.ant[0]) return 1;
+              if (b.ant[0] == a.ant[0]) {
+                //ANT
+                if (b.chest[0] < a.chest[0]) return -1;
+                if (b.chest[0] > a.chest[0]) return 1;
+                return 0;
+              }
+            }
+          }
         }
       });
     }
-
-    // SORT SIZE
-    // if (sortSizeCresc) {
-    //   InsectsArray.sort(function (a, b) {
-    //     //BUTT PICCOLO - HEAD
-    //     if (a.butt < b.butt) {
-    //       if (a.head < b.head) {
-    //         return -1;
-    //       }
-    //       if (a.head > b.head) {
-    //         return -1;
-    //       }
-    //       return -1;
-    //     }
-
-    //     if (a.butt > b.butt) {
-    //       if (a.head > b.head) {
-    //         return 1;
-    //       }
-    //       if (a.head < b.head) {
-    //         return 1;
-    //       }
-    //       return 1;
-    //     }
-
-    //     if (a.butt == b.butt) {
-    //       if (a.head < b.head) {
-    //         return -1;
-    //       }
-    //       if (a.head > b.head) {
-    //         return 1;
-    //       }
-    //       return 0;
-    //     }
-    //   });
-    // }
-
-    //SORT TYPE ANT
-    // if (sortAntCresc) {
-    //   InsectsArray.sort(function (a, b) {
-    //     if (a.ant < b.ant) return -1;
-    //     if (a.ant > b.ant) return 1;
-    //     return 0;
-    //   });
-    // }
-
-    // if (sortAntDecresc) {
-    //   InsectsArray.sort(function (a, b) {
-    //     if (b.ant < a.ant) return -1;
-    //     if (b.ant > a.ant) return 1;
-    //     return 0;
-    //   });
-    // }
-
-    //SORT TYPE BUTT
-    // if (sortButtCresc) {
-    //   InsectsArray.sort(function (a, b) {
-    //     if (a.butt < b.butt) return -1;
-    //     if (a.butt > b.butt) return 1;
-    //     return 0;
-    //   });
-    // }
-
-    // if (sortButtDecresc) {
-    //   InsectsArray.sort(function (a, b) {
-    //     if (b.butt < a.butt) return -1;
-    //     if (b.butt > a.butt) return 1;
-    //     return 0;
-    //   });
-    // }
-
-    //SORT TYPE CHEST
-    // if (sortChestCresc) {
-    //   InsectsArray.sort(function (a, b) {
-    //     if (a.chest < b.chest) return -1;
-    //     if (a.chest > b.chest) return 1;
-    //     return 0;
-    //   });
-    // }
-
-    // if (sortChestDecresc) {
-    //   InsectsArray.sort(function (a, b) {
-    //     if (b.chest < a.chest) return -1;
-    //     if (b.chest > a.chest) return 1;
-    //     return 0;
-    //   });
-    // }
-
-    //SORT TYPE HEAD
-    // if (sortHeadCresc) {
-    //   InsectsArray.sort(function (a, b) {
-    //     if (a.head < b.head) return -1;
-    //     if (a.head > b.head) return 1;
-    //     return 0;
-    //   });
-    // }
-
-    // if (sortHeadDecresc) {
-    //   InsectsArray.sort(function (a, b) {
-    //     if (b.head < a.head) return -1;
-    //     if (b.head > a.head) return 1;
-    //     return 0;
-    //   });
-    // }
-
-    //SORT TYPE CHEST
-    // if (sortLegCresc) {
-    //   InsectsArray.sort(function (a, b) {
-    //     if (a.leg < b.leg) return -1;
-    //     if (a.leg > b.leg) return 1;
-    //     return 0;
-    //   });
-    // }
-
-    // if (sortLegDecresc) {
-    //   InsectsArray.sort(function (a, b) {
-    //     if (b.leg < a.leg) return -1;
-    //     if (b.leg > a.leg) return 1;
-    //     return 0;
-    //   });
-    // }
 
     //SHOW THE INSECT ARRAY
 
