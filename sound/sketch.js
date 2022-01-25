@@ -14,9 +14,6 @@ function setup() {
 function draw() {
   background(220);
   canvas.mouseClicked(playMusic);
-  // if(clockSound.setVolume <0.5){
-
-  // }
 }
 
 function playMusic() {
