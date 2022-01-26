@@ -346,6 +346,8 @@ let sketch_1 = function (p) {
       }
     }
 
+    // Send data to Firebase
+
     function send_data() {
       clockSound.stop();
 
@@ -386,6 +388,8 @@ let sketch_1 = function (p) {
         .id("ant-img");
     }
 
+    // Get current date and time
+
     let today = new Date();
 
     let day = String(today.getDate()).padStart(2, "0");
@@ -399,12 +403,14 @@ let sketch_1 = function (p) {
 
     let time = hour + ":" + minutes;
 
+    // Chest images list
+
     function chest_S() {
-      let chestS_List = ["S-1", "S-2", "S-3", "S-4", "S-5", "S-6"];
+      let chestS_List = ["S-1", "S-2", "S-3", "S-4", "S-5", "S-6", "S-7", "S-8"];
       chestX = p.random(chestS_List);
     }
     function chest_M() {
-      let chestM_List = ["M-1", "M-2", "M-3", "M-4", "M-5", "M-6", "M-7"];
+      let chestM_List = ["M-1", "M-2", "M-3", "M-4", "M-5", "M-6", "M-7", "M-8", "M-9", "M-10"];
       chestX = p.random(chestM_List);
     }
     function chest_B() {
@@ -421,12 +427,15 @@ let sketch_1 = function (p) {
         "B-10",
         "B-11",
         "B-12",
+        "B-13",
       ];
       chestX = p.random(chestB_List);
     }
 
+    // Antennas images list
+
     function ant_S() {
-      let antS_List = ["S-1", "S-2", "S-3", "S-4", "S-5", "S-6", "S-7", "S-8"];
+      let antS_List = ["S-1", "S-2", "S-3", "S-4", "S-5", "S-6", "S-7", "S-8", "S-9"];
       antX = p.random(antS_List);
     }
     function ant_M() {
@@ -443,6 +452,9 @@ let sketch_1 = function (p) {
         "M-10",
         "M-11",
         "M-12",
+        "M-13",
+        "M-14",
+        "M-15",
       ];
       antX = p.random(antM_List);
     }
@@ -469,12 +481,30 @@ let sketch_1 = function (p) {
         butt_B();
       }
     }
+
+    // Butt images list
+
     function butt_S() {
-      let buttS_List = ["S-1", "S-2", "S-3", "S-4", "S-5", "S-6", "S-7"];
+      let buttS_List = ["S-1", "S-2", "S-3", "S-4", "S-5", "S-6", "S-7", "S-8", "S-9", "S-10"];
       buttX = p.random(buttS_List);
     }
     function butt_M() {
-      let buttM_List = ["M-1", "M-2", "M-3", "M-4", "M-5", "M-6", "M-7", "M-8", "M-9", "M-10"];
+      let buttM_List = [
+        "M-1",
+        "M-2",
+        "M-3",
+        "M-4",
+        "M-5",
+        "M-6",
+        "M-7",
+        "M-8",
+        "M-9",
+        "M-10",
+        "M-11",
+        "M-12",
+        "M-13",
+        "M-14",
+      ];
       buttX = p.random(buttM_List);
     }
     function butt_B() {
@@ -484,7 +514,7 @@ let sketch_1 = function (p) {
   };
 };
 
-//MOUSE
+// MOUSE SKETCH
 
 let sketch_Mouse = function (p) {
   p.setup = function () {
@@ -521,9 +551,6 @@ let sketch_Mouse = function (p) {
 
       somma = somma + contenitore[indice];
       indice++;
-      // if (contenitore.length > 100) {
-      //   contenitore = [];
-      // }
       media = p.floor(somma / contenitore.length);
     }
 
@@ -556,7 +583,6 @@ let sketch_Mouse = function (p) {
 
     let xCerchio = p.map(media, 0, 150, 20, p.width - 20, true);
 
-    // p.ellipse(xCerchio, 250, 20);
     p.triangle(
       xCerchio - 10,
       p.height / 2 - 20,
@@ -586,16 +612,42 @@ let sketch_Mouse = function (p) {
       click = 1;
     }
 
+    // Legs images list
+
     function leg_S() {
-      let legS_List = ["S-1", "S-2", "S-3", "S-4", "S-5", "S-6", "S-7", "S-8"];
+      let legS_List = ["S-1", "S-2", "S-3", "S-4", "S-5", "S-6", "S-7", "S-8", "S-9", "S-10"];
       legX = p.random(legS_List);
     }
     function leg_M() {
-      let legM_List = ["M-1", "M-2", "M-3", "M-4", "M-5", "M-6", "M-7", "M-8", "M-9"];
+      let legM_List = [
+        "M-1",
+        "M-2",
+        "M-3",
+        "M-4",
+        "M-5",
+        "M-6",
+        "M-7",
+        "M-8",
+        "M-9",
+        "M-10",
+        "M-11",
+      ];
       legX = p.random(legM_List);
     }
     function leg_B() {
-      let legB_List = ["B-1", "B-2", "B-3", "B-4", "B-5", "B-6", "B-7", "B-8", "B-9"];
+      let legB_List = [
+        "B-1",
+        "B-2",
+        "B-3",
+        "B-4",
+        "B-5",
+        "B-6",
+        "B-7",
+        "B-8",
+        "B-9",
+        "B-10",
+        "B-11",
+      ];
       legX = p.random(legB_List);
     }
 
@@ -605,7 +657,7 @@ let sketch_Mouse = function (p) {
   };
 };
 
-//WEBCAM
+// WEBCAM SKETCH
 
 let sketch_Webcam = function (p) {
   p.setup = function () {
@@ -623,7 +675,6 @@ let sketch_Webcam = function (p) {
     p.frameRate(10);
 
     //button foto
-    // button = p.createButton("Answer");
     button = p.select("#webcam-btn");
     button.mousePressed(takesnap);
 
@@ -631,15 +682,10 @@ let sketch_Webcam = function (p) {
     function takesnap() {
       p.select("#showQ5").removeClass("hide");
       if (fotoScattata == 0) {
-        //video.stop();
         fotoScattata = 1;
-        //cambia la label del bottone
         button.html("Try again");
-        //console.log(bright);
       } else {
-        //video.play();
         fotoScattata = 0;
-        //cambia la label del bottone
         button.html("Stop");
       }
       if (xPallina < 213) {
@@ -650,6 +696,8 @@ let sketch_Webcam = function (p) {
         head_B();
       }
     }
+
+    // Head images list
 
     function head_S() {
       let headS_List = [
@@ -665,11 +713,15 @@ let sketch_Webcam = function (p) {
         "S-10",
         "S-11",
         "S-12",
+        "S-13",
+        "S-14",
+        "S-15",
+        "S-16",
       ];
       headX = p.random(headS_List);
     }
     function head_M() {
-      let headM_List = ["M-1", "M-2", "M-3", "M-4", "M-5"];
+      let headM_List = ["M-1", "M-2", "M-3", "M-4", "M-5", "M-6", "M-7"];
       headX = p.random(headM_List);
     }
     function head_B() {
@@ -699,7 +751,7 @@ let sketch_Webcam = function (p) {
         let g = video.pixels[index + 1];
         let b = video.pixels[index + 2];
 
-        //var bright prende la luminosità dei pixel e poi viene mappato
+        //bright prende la luminosità dei pixel e poi viene mappato
         bright = (r + g + b) / 3;
         let size = p.map(bright, 0, 255, gridSize, 1);
 
@@ -712,14 +764,7 @@ let sketch_Webcam = function (p) {
     p.pop();
 
     //la pallina si sposta a seconda della luminosita (var bright)
-    // p.push();
-    // p.translate(wCam, 0);
-    // p.scale(-1, 1);
     xPallina = p.map(bright, 0, 120, 0, p.width, true);
-    // c = p.color(255, 0, 0);
-    // p.fill(c);
-    // p.ellipse(xPallina, 0, 20);
-    // p.pop();
 
     //slider risposte
     p.push();
@@ -750,15 +795,13 @@ let sketch_Webcam = function (p) {
     //se viene scattata la foto da funzione takesnap il video si stoppa
     if (fotoScattata == 1) {
       video.stop();
-      //fotoScattata = 1;
     } else {
       video.play();
-      //fotoScattata = 0;
     }
   };
 };
 
-//AUDIO
+// AUDIO SKETCH
 
 let sketch_Audio = function (p) {
   p.setup = function () {
@@ -812,6 +855,8 @@ let sketch_Audio = function (p) {
     p.select("#stop-audio").removeClass("hide");
   }
 };
+
+// Create all the p5 sketches
 
 let s1 = new p5(sketch_1);
 let s2 = new p5(sketch_Mouse);
