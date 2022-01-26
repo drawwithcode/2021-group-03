@@ -392,8 +392,8 @@ let sketch_1 = function (p) {
     let month = String(today.getMonth() + 1).padStart(2, "0");
     let year = today.getFullYear();
 
-    let hour = String(today.getHours());
-    let minutes = String(today.getMinutes());
+    let hour = String(today.getHours()).padStart(2, "0");
+    let minutes = String(today.getMinutes()).padStart(2, "0");
 
     today = day + " / " + month + " / " + year;
 
@@ -741,9 +741,9 @@ let sketch_Webcam = function (p) {
     p.textAlign(p.CENTER);
     p.fill("black");
     p.noStroke();
-    p.text("No", p.width / 6, p.height);
-    p.text("Sometimes", p.width / 2, p.height);
-    p.text("Yes", (p.width / 6) * 5, p.height);
+    p.text("No", p.width / 6, p.height - 2);
+    p.text("Sometimes", p.width / 2, p.height - 2);
+    p.text("Yes", (p.width / 6) * 5, p.height - 2);
 
     p.pop();
 
@@ -795,12 +795,12 @@ let sketch_Audio = function (p) {
 
     if (mic) {
       const micLevel = mic.getLevel();
-      d = p.map(micLevel, 0, 1, 1, 700);
+      d = p.map(micLevel, 0, 1, 1, 1000);
 
       p.push();
       p.stroke(173, 149, 127);
       p.noFill();
-      p.circle(200, 200, d);
+      p.circle(200, 200, d * 3);
       p.pop();
     }
   };
