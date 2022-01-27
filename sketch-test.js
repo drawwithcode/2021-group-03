@@ -320,14 +320,17 @@ let sketch_1 = function (p) {
     let sendData = p.select("#send-data");
 
     let stopAudioBtn = p.select("#stop-audio");
+
     stopAudioBtn.mousePressed(stopAudio);
 
+    sendData.mousePressed(send_data);
+
     function audioAnt() {
-      if (d <= 126) {
+      if (d * 3 <= 126) {
         ant_S();
-      } else if (d < 126 && d <= 252) {
+      } else if (d * 3 > 126 && d * 3 <= 252) {
         ant_M();
-      } else if (d > 252) {
+      } else if (d * 3 > 252) {
         ant_B();
       }
     }
@@ -377,8 +380,6 @@ let sketch_1 = function (p) {
 
       p.random(insectSounds).play();
     }
-
-    sendData.mousePressed(send_data);
 
     function chosenAnt() {
       p.createImg("assets/partsNew/ant/ant-" + antX + ".png")
@@ -527,6 +528,7 @@ let sketch_Mouse = function (p) {
 
     //funzione che resetta mouse shake
     function restartArray() {
+      p.loop();
       contenitore = [];
       click = 0;
       media = 0;
@@ -537,6 +539,22 @@ let sketch_Mouse = function (p) {
 
     century = p.loadFont("assets/fonts/century-schoolbook/cen-schlbk-r.TTF");
   };
+
+  // Legs images list
+
+  function leg_S() {
+    let legS_List = ["S-1", "S-2", "S-3", "S-4", "S-5", "S-6", "S-7", "S-8", "S-9", "S-10"];
+    legX = p.random(legS_List);
+  }
+  function leg_M() {
+    let legM_List = ["M-1", "M-2", "M-3", "M-4", "M-5", "M-6", "M-7", "M-8", "M-9", "M-10", "M-11"];
+    legX = p.random(legM_List);
+  }
+  function leg_B() {
+    let legB_List = ["B-1", "B-2", "B-3", "B-4", "B-5", "B-6", "B-7", "B-8", "B-9", "B-10", "B-11"];
+    legX = p.random(legB_List);
+  }
+
   p.draw = function () {
     p.background(255, 252, 241);
 
@@ -592,68 +610,29 @@ let sketch_Mouse = function (p) {
       p.height / 2 - 20
     );
 
-    //nel momento in cui si clicca viene mandato in console la risposta a seconda del valore di XCerchio
-    if (click == 1) {
-      p.select("#showQ4").removeClass("hide");
-      buttonMouse.removeClass("hide");
-      if (xCerchio < 167) {
-        leg_S();
-      } else if (xCerchio > 167 && xCerchio < 333) {
-        leg_M();
-      } else if (xCerchio > 333) {
-        leg_B();
-      }
-    }
+    p.noFill();
+    p.stroke(173, 149, 127);
+    p.rect(0, 0, p.windowWidth / 3, p.windowHeight / 2 - 1);
 
     //nel momento in cui avviene un click dentro il canvas manda la funzione stopShake
     canvasMouse.mouseClicked(stopShake);
 
     function stopShake() {
-      click = 1;
+      p.select("#showQ4").removeClass("hide");
+      buttonMouse.removeClass("hide");
+      if (xCerchio < 167) {
+        leg_S();
+        p.noLoop();
+      } else if (xCerchio > 167 && xCerchio < 333) {
+        leg_M();
+        p.noLoop();
+      } else if (xCerchio > 333) {
+        leg_B();
+        p.noLoop();
+      }
     }
 
-    // Legs images list
-
-    function leg_S() {
-      let legS_List = ["S-1", "S-2", "S-3", "S-4", "S-5", "S-6", "S-7", "S-8", "S-9", "S-10"];
-      legX = p.random(legS_List);
-    }
-    function leg_M() {
-      let legM_List = [
-        "M-1",
-        "M-2",
-        "M-3",
-        "M-4",
-        "M-5",
-        "M-6",
-        "M-7",
-        "M-8",
-        "M-9",
-        "M-10",
-        "M-11",
-      ];
-      legX = p.random(legM_List);
-    }
-    function leg_B() {
-      let legB_List = [
-        "B-1",
-        "B-2",
-        "B-3",
-        "B-4",
-        "B-5",
-        "B-6",
-        "B-7",
-        "B-8",
-        "B-9",
-        "B-10",
-        "B-11",
-      ];
-      legX = p.random(legB_List);
-    }
-
-    p.noFill();
-    p.stroke(173, 149, 127);
-    p.rect(0, 0, p.windowWidth / 3, p.windowHeight / 2 - 1);
+    console.log(legX);
   };
 };
 

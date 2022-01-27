@@ -46,7 +46,6 @@ async function firebaseSetup() {
   onValue(giveMeData, function (snapshot) {
     const Insects = snapshot.val();
     InsectsArray = Object.values(Insects);
-    // console.log(InsectsArray);
   });
 }
 
