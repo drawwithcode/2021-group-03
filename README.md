@@ -8,7 +8,8 @@ All the inner insects created by previous users can be viewed in the Archive, wh
 ## How it works
 ### Assets
 Because the focus of the website is the creation of new types of insects by combining different body parts, it was fundamental to gather pieces that could all fit together well. Starting from a great resource, Insects images from Beetles of Russia and Western Europe by G. G. Jacobson, (retrieved from zin.ru) we selected a bunch of insects and then separated them into pieces. To be sure that they would always fit together, no matter the combination, we manually tweaked some junction points. 
-!(/assets/pieces.png) 
+
+![image](/assets/pieces.png) 
 ### The test
 The test section is achieved with 4 different p5 instances: one handles the whole test and the insect construction, one for the mouse shake question, one for the webcam question and the last one for the audio question. 
 
