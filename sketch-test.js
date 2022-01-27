@@ -620,13 +620,13 @@ let sketch_Mouse = function (p) {
     function stopShake() {
       p.select("#showQ4").removeClass("hide");
       buttonMouse.removeClass("hide");
-      if (xCerchio < 167) {
+      if (xCerchio < (p.width - 40) / 3 + 20) {
         leg_S();
         p.noLoop();
-      } else if (xCerchio > 167 && xCerchio < 333) {
+      } else if (xCerchio > (p.width - 40) / 3 + 20 && xCerchio < ((p.width - 40) / 3) * 2 + 20) {
         leg_M();
         p.noLoop();
-      } else if (xCerchio > 333) {
+      } else if (xCerchio > ((p.width - 40) / 3) * 2 + 20) {
         leg_B();
         p.noLoop();
       }
