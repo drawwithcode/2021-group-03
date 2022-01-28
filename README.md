@@ -35,6 +35,10 @@ Each question is associated to an insect’s body part:
 
 #### Mouse shake question
 
+To answer the third question the user has to shake the mouse until a cursor reach the desired point, inside a range with three sections, one for each answer.
+
+The cursor moves based on the average speed of the mouse by using this code:
+
 ```
 let difX = p.abs(p.mouseX - p.pmouseX);
 let difY = p.abs(p.mouseY - p.pmouseY);
@@ -49,6 +53,8 @@ if (click == 0) {
 ```
 
 #### Webcam question
+
+In the fourth question, the user answers using the brightness of the webcam image. The latter is rendered as a grid of little black squares whose size is relative to the brightness of that pixel area (the darker it is, the bigger it gets).
 
 ```
 for (let y = 0; y < video.height; y += gridSize) {
@@ -71,10 +77,20 @@ for (let y = 0; y < video.height; y += gridSize) {
 
 #### Audio question
 
+In the fifth question, the user answers through the use of the microphone. The louder the sound, the bigger the circle diameter `d` will be, allowing to choose the desired answer.
+
+The sound management is achieved with the use of the p5.sound library.
+
 ```
 if (mic) {
   const micLevel = mic.getLevel();
   d = p.map(micLevel, 0, 1, 1, 1000);
+
+  p.push();
+  p.stroke(173, 149, 127);
+  p.noFill();
+  p.circle(200, 200, d * 3);
+  p.pop();
 }
 
 function startAudio() {
@@ -89,7 +105,7 @@ function startAudio() {
 
 Each time the user answers a question, a certain body part is assigned, based on the answer given. These body parts are selected within 3 sub-groups: big, medium and small.
 
-For example if the user chooses the first answer for the first question he will be assigned a small chest, randomly picked from the chest-S array, which contains all the small chests. If he chooses the second answer he’ll be given a random medium chest and if he chooses the third, a random big chest.
+For example, if the user chooses the first answer for the first question he will be assigned a small chest, randomly picked from the chest-S array, which contains all the small chests. If he chooses the second answer he’ll be given a random medium chest and if he chooses the third, a random big chest.
 
 ```
 setChestS.mousePressed(chest_S);
@@ -128,7 +144,7 @@ addUser(newUser);
 
 ### The archive
 
-To better manage the database, all the user data on Firebase are stored inside an array called `InsectsArray`.
+To better manage the database, the users data on Firebase are stored inside an array called `InsectsArray`.
 
 ```
 let giveMeData = ref(myDatabase, "insects");
