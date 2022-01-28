@@ -35,7 +35,18 @@ Each question is associated to an insect’s body part:
 
 #### Mouse shake question
 
-sas
+```
+let difX = p.abs(p.mouseX - p.pmouseX);
+let difY = p.abs(p.mouseY - p.pmouseY);
+let vel = difX + difY;
+
+if (click == 0) {
+  contenitore.push(vel);
+  somma = somma + contenitore[indice];
+  indice++;
+  media = p.floor(somma / contenitore.length);
+}
+```
 
 #### Webcam question
 
@@ -60,7 +71,19 @@ for (let y = 0; y < video.height; y += gridSize) {
 
 #### Audio question
 
-sas
+```
+if (mic) {
+  const micLevel = mic.getLevel();
+  d = p.map(micLevel, 0, 1, 1, 1000);
+}
+
+function startAudio() {
+  p.userStartAudio();
+  mic = new p5.AudioIn();
+  mic.start();
+  p.select("#stop-audio").removeClass("hide");
+}
+```
 
 #### Insect creation
 
