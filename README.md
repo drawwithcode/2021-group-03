@@ -39,9 +39,10 @@ sas
 
 #### Webcam question
 
+```
 for (let y = 0; y < video.height; y += gridSize) {
-for (let x = 0; x < video.width; x += gridSize) {
-let index = (y _ video.width + x) _ 4;
+  for (let x = 0; x < video.width; x += gridSize) {
+    let index = (y _ video.width + x) _ 4;
 
     let r = video.pixels[index + 0];
     let g = video.pixels[index + 1];
@@ -53,9 +54,9 @@ let index = (y _ video.width + x) _ 4;
     p.fill(0);
     p.noStroke();
     p.rect(x, y, size);
-
+  }
 }
-}
+```
 
 #### Audio question
 
