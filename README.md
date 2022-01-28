@@ -1,5 +1,5 @@
-# :beetle: Your Inner Insect
-Your Inner Insect was born as a reflection on the theme of metamorphosis through the eyes of Franz Kafka. In his book The Metamorphosis (1916) the author links complex psychological conditions to an insect (a cockroach). 
+# :beetle: Your Inner Insect :beetle:
+Your Inner Insect was born as a reflection on the theme of metamorphosis through the eyes of Franz Kafka. In his book *The Metamorphosis* (1916) the author links complex psychological conditions to an insect (a cockroach). 
 
 The website consists of a guided experience where users can explore their social insecurities by answering some questions through different types of interactions. Each question is associated with a different insect’s body part. 
 By answering each question the user will be assigned different types of insect’s body parts according to the answer selected . At the end of the test, all the body parts combined will give shape to a new kind of insect, your inner insect.
@@ -7,9 +7,10 @@ All the inner insects created by previous users can be viewed in the Archive, wh
 
 ## How it works
 ### Assets
-Because the focus of the website is the creation of new types of insects by combining different body parts, it was fundamental to gather pieces that could all fit together well. Starting from a great resource, Insects images from Beetles of Russia and Western Europe by G. G. Jacobson, (retrieved from zin.ru) we selected a bunch of insects and then separated them into pieces. To be sure that they would always fit together, no matter the combination, we manually tweaked some junction points. 
+Because the focus of the website is the creation of new types of insects by combining different body parts, it was fundamental to gather pieces that could all fit together well. Starting from a great resource, [Beetles of Russia and Western Europe](https://www.zin.ru/ANIMALIA/Coleoptera/rus/jactab0.htm) (1915) by G. G. Jacobson, we selected a bunch of insect illustrations and then separated each one into pieces. To be sure that they would always fit well together, no matter the combination, we manually tweaked some junction points. 
 
 ![image](/assets/pieces.png) 
+
 ### The test
 The test section is achieved with 4 different p5 instances: one handles the whole test and the insect construction, one for the mouse shake question, one for the webcam question and the last one for the audio question. 
 
@@ -26,6 +27,17 @@ Each question is associated to an insect’s body part:
 - 3rd question - Legs
 - 4th question - Head
 - 5th question - Antennas
+
+#### Mouse shake question
+sas
+
+#### Webcam question
+sas
+
+#### Audio question
+sas
+
+#### Insect creation
 
 Each time the user answers a question, a certain body part is assigned, based on the answer given. These body parts are selected within 3 sub-groups: big, medium and small.
 
@@ -114,3 +126,7 @@ for (let i = InsectsArray.length - 1; i >= 0; i--) {
 - Chiara Poma
 - Ludovica Rossi
 - Enzo Taboada Fung
+## :mortar_board: Faculty
+- Andrea Benedetti
+- Tommaso Elli
+- Michele Mauri
