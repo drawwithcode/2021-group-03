@@ -1,18 +1,22 @@
 # :beetle: Your Inner Insect :beetle:
-Your Inner Insect was born as a reflection on the theme of metamorphosis through the eyes of Franz Kafka. In his book *The Metamorphosis* (1916) the author links complex psychological conditions to an insect (a cockroach). 
 
-The website consists of a guided experience where users can explore their social insecurities by answering some questions through different types of interactions. Each question is associated with a different insect’s body part. 
+Your Inner Insect was born as a reflection on the theme of metamorphosis through the eyes of Franz Kafka. In his book _The Metamorphosis_ (1916) the author links complex psychological conditions to an insect (a cockroach).
+
+The website consists of a guided experience where users can explore their social insecurities by answering some questions through different types of interactions. Each question is associated with a different insect’s body part.
 By answering each question the user will be assigned different types of insect’s body parts according to the answer selected . At the end of the test, all the body parts combined will give shape to a new kind of insect, your inner insect.
-All the inner insects created by previous users can be viewed in the Archive, where they can be sorted by various parameters. 
+All the inner insects created by previous users can be viewed in the Archive, where they can be sorted by various parameters.
 
 ## How it works
-### Assets
-Because the focus of the website is the creation of new types of insects by combining different body parts, it was fundamental to gather pieces that could all fit together well. Starting from a great resource, [Beetles of Russia and Western Europe](https://www.zin.ru/ANIMALIA/Coleoptera/rus/jactab0.htm) (1915) by G. G. Jacobson, we selected a bunch of insect illustrations and then separated each one into pieces. To be sure that they would always fit well together, no matter the combination, we manually tweaked some junction points. 
 
-![image](/assets/pieces.png) 
+### Assets
+
+Because the focus of the website is the creation of new types of insects by combining different body parts, it was fundamental to gather pieces that could all fit together well. Starting from a great resource, [Beetles of Russia and Western Europe](https://www.zin.ru/ANIMALIA/Coleoptera/rus/jactab0.htm) (1915) by G. G. Jacobson, we selected a bunch of insect illustrations and then separated each one into pieces. To be sure that they would always fit well together, no matter the combination, we manually tweaked some junction points.
+
+![image](/assets/pieces.png)
 
 ### The test
-The test section is achieved with 4 different p5 instances: one handles the whole test and the insect construction, one for the mouse shake question, one for the webcam question and the last one for the audio question. 
+
+The test section is achieved with 4 different p5 instances: one handles the whole test and the insect construction, one for the mouse shake question, one for the webcam question and the last one for the audio question.
 
 ```
 let s1 = new p5(sketch_1);
@@ -22,6 +26,7 @@ let s4 = new p5(sketch_Audio);
 ```
 
 Each question is associated to an insect’s body part:
+
 - 1st question - Chest
 - 2nd question - Abdomen
 - 3rd question - Legs
@@ -29,19 +34,39 @@ Each question is associated to an insect’s body part:
 - 5th question - Antennas
 
 #### Mouse shake question
+
 sas
 
 #### Webcam question
-sas
+
+for (let y = 0; y < video.height; y += gridSize) {
+for (let x = 0; x < video.width; x += gridSize) {
+let index = (y _ video.width + x) _ 4;
+
+    let r = video.pixels[index + 0];
+    let g = video.pixels[index + 1];
+    let b = video.pixels[index + 2];
+
+    bright = (r + g + b) / 3;
+    let size = p.map(bright, 0, 255, gridSize, 1);
+
+    p.fill(0);
+    p.noStroke();
+    p.rect(x, y, size);
+
+}
+}
 
 #### Audio question
+
 sas
 
 #### Insect creation
 
 Each time the user answers a question, a certain body part is assigned, based on the answer given. These body parts are selected within 3 sub-groups: big, medium and small.
 
-For example if the user chooses the first answer for the first question he will be assigned a small chest, randomly picked from the chest-S array, which contains all the small chests. If he chooses the second answer he’ll be given a random medium chest and if he chooses the third, a random big chest. 
+For example if the user chooses the first answer for the first question he will be assigned a small chest, randomly picked from the chest-S array, which contains all the small chests. If he chooses the second answer he’ll be given a random medium chest and if he chooses the third, a random big chest.
+
 ```
 setChestS.mousePressed(chest_S);
 setChestM.mousePressed(chest_M);
@@ -49,7 +74,7 @@ setChestB.mousePressed(chest_B);
 
 function chest_S() {
   let chestS_List = ["S-1", "S-2", "S-3", "S-4", "S-5", "S-6", "S-7", "S-8"];
-  chestX = p.random(chestS_List); 
+  chestX = p.random(chestS_List);
 }
 function chest_M() {
   let chestM_List = ["M-1", "M-2", "M-3", "M-4", "M-5", "M-6", "M-7", "M-8", "M-9", "M-10"];
@@ -60,7 +85,9 @@ function chest_B() {
   chestX = p.random(chestB_List);
 }
 ```
+
 In the end all the body parts assigned that will form the new insect are stored inside an object and sent to the Firebase database.
+
 ```
 const newUser = {
   name: nameX,
@@ -74,8 +101,11 @@ const newUser = {
 };
 addUser(newUser);
 ```
+
 ### The archive
+
 To better manage the database, all the user data on Firebase are stored inside an array called `InsectsArray`.
+
 ```
 let giveMeData = ref(myDatabase, "insects");
 
@@ -84,7 +114,9 @@ onValue(giveMeData, function (snapshot) {
   InsectsArray = Object.values(Insects);
 });
 ```
+
 To display all the insects generated by the users in the archive section, a for loop is executed, displaying all the images corresponding to each body part, the name and the date.
+
 ```
 for (let i = InsectsArray.length - 1; i >= 0; i--) {
   let box = createDiv().id("box-" + i).addClass("insect-box").parent("archive-container");
@@ -121,12 +153,15 @@ for (let i = InsectsArray.length - 1; i >= 0; i--) {
 ```
 
 ## :busts_in_silhouette: Team
+
 - Anel Alzhanova
 - Lorenzo Bernini
 - Chiara Poma
 - Ludovica Rossi
 - Enzo Taboada Fung
+
 ## :mortar_board: Faculty
+
 - Andrea Benedetti
 - Tommaso Elli
 - Michele Mauri
