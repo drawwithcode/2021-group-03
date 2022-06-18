@@ -1,0 +1,599 @@
+{
+  "insects": {
+    "-MtJJV3SCm2VlcyVSkBl": {
+      "ant": "M-10",
+      "butt": "B-2",
+      "chest": "M-4",
+      "date": "13 / 01 / 2022",
+      "head": "M-5",
+      "leg": "S-1",
+      "name": "Eva "
+    },
+    "-MtcfVtEyDq-8dPiyB4O": {
+      "ant": "B-2",
+      "butt": "S-3",
+      "chest": "B-5",
+      "date": "17 / 01 / 2022",
+      "head": "M-2",
+      "leg": "B-1",
+      "name": "matteo"
+    },
+    "-Mu6IlqtFP7-xsefZ3ag": {
+      "ant": "S-2",
+      "butt": "S-4",
+      "chest": "M-5",
+      "date": "23 / 01 / 2022",
+      "head": "S-3",
+      "leg": "M-2",
+      "name": "gang"
+    },
+    "-Mu6JSLfbekmzcIzcLJK": {
+      "ant": "S-6",
+      "butt": "S-4",
+      "chest": "S-5",
+      "date": "23 / 01 / 2022",
+      "head": "M-5",
+      "leg": "M-3",
+      "name": "ludo"
+    },
+    "-MuCHV7avQVtKLlbW2L5": {
+      "ant": "B-2",
+      "butt": "B-2",
+      "chest": "S-3",
+      "date": "24 / 01 / 2022",
+      "head": "M-4",
+      "leg": "B-8",
+      "name": "Greta"
+    },
+    "-MuFhsgBRcFT2iJLJFBo": {
+      "ant": "S-5",
+      "butt": "S-2",
+      "chest": "M-3",
+      "date": "25 / 01 / 2022",
+      "head": "M-2",
+      "leg": "M-6",
+      "name": "ludovica",
+      "time": "11:8"
+    },
+    "-MuH4GOsNwq5YriOLJ3W": {
+      "ant": "S-4",
+      "butt": "B-7",
+      "chest": "M-5",
+      "date": "25 / 01 / 2022",
+      "head": "M-5",
+      "leg": "M-5",
+      "name": "Lorenzo",
+      "time": "17:31"
+    },
+    "-MuHjfEKqSb-Dp6p2Ut9": {
+      "ant": "B-2",
+      "butt": "S-1",
+      "chest": "S-6",
+      "date": "25 / 01 / 2022",
+      "head": "B-6",
+      "leg": "B-4",
+      "name": "Ugo",
+      "time": "20:37"
+    },
+    "-MuKo4e00WSS_w7PEGCz": {
+      "ant": "S-1",
+      "butt": "B-3",
+      "chest": "M-5",
+      "date": "26 / 01 / 2022",
+      "head": "M-1",
+      "leg": "B-7",
+      "name": "Mattarella",
+      "time": "10:55"
+    },
+    "-MuKz9zuNlz8-f95mTlE": {
+      "ant": "S-6",
+      "butt": "B-3",
+      "chest": "B-2",
+      "date": "26 / 01 / 2022",
+      "head": "M-4",
+      "leg": "S-2",
+      "name": "Roberto",
+      "time": "11:43"
+    },
+    "-MuKzDLnQI-ElkmcBlOu": {
+      "ant": "S-8",
+      "butt": "S-2",
+      "chest": "B-3",
+      "date": "26 / 01 / 2022",
+      "head": "M-2",
+      "leg": "M-5",
+      "name": "Aldo",
+      "time": "11:40"
+    },
+    "-MuKzO53m8nTJ7tGAKCG": {
+      "ant": "S-4",
+      "butt": "S-1",
+      "chest": "S-3",
+      "date": "26 / 01 / 2022",
+      "head": "M-2",
+      "leg": "M-6",
+      "name": "Riccardo",
+      "time": "11:44"
+    },
+    "-MuMiLaPhzGOEFD7JGqk": {
+      "ant": "S-8",
+      "butt": "B-9",
+      "chest": "S-4",
+      "date": "26 / 01 / 2022",
+      "head": "S-14",
+      "leg": "S-1",
+      "name": "MICHELE",
+      "time": "19:48"
+    },
+    "-MuMkp9YCz12DbDkijNY": {
+      "ant": "S-9",
+      "butt": "S-2",
+      "chest": "S-2",
+      "date": "26 / 01 / 2022",
+      "head": "S-6",
+      "leg": "B-7",
+      "name": "Joe",
+      "time": "20:00"
+    },
+    "-MuMpKgxehLik_yPrCxm": {
+      "ant": "S-3",
+      "butt": "S-7",
+      "chest": "S-1",
+      "date": "26 / 01 / 2022",
+      "head": "S-13",
+      "leg": "M-8",
+      "name": "pe",
+      "time": "20:18"
+    },
+    "-MuMq10ziH3dYNcW-Ftk": {
+      "ant": "S-4",
+      "butt": "M-10",
+      "chest": "S-8",
+      "date": "26 / 01 / 2022",
+      "head": "S-6",
+      "leg": "S-10",
+      "name": "Bri",
+      "time": "20:22"
+    },
+    "-MuNSSm3HzATFQK5MZgJ": {
+      "ant": "S-7",
+      "butt": "S-8",
+      "chest": "M-3",
+      "date": "26 / 01 / 2022",
+      "head": "B-4",
+      "leg": "B-11",
+      "name": "Valentina",
+      "time": "23:13"
+    },
+    "-MuNXJ4ooUkJKqeeFJqN": {
+      "ant": "M-2",
+      "butt": "B-9",
+      "chest": "M-8",
+      "date": "26 / 01 / 2022",
+      "head": "M-6",
+      "leg": "M-7",
+      "name": "Gesù Cristo",
+      "time": "23:36"
+    },
+    "-MuNYjbFg5iGA9LeotLF": {
+      "ant": "B-7",
+      "butt": "B-1",
+      "chest": "S-3",
+      "date": "26 / 01 / 2022",
+      "head": "S-5",
+      "leg": "S-3",
+      "name": "La Madonna",
+      "time": "23:42"
+    },
+    "-MuNkAzFdh9vWfGFb5w9": {
+      "ant": "S-1",
+      "butt": "M-11",
+      "chest": "M-3",
+      "date": "27 / 01 / 2022",
+      "head": "M-5",
+      "leg": "M-4",
+      "name": "Matteo",
+      "time": "00:35"
+    },
+    "-MuO1B-MOOGVGQL6KSwo": {
+      "ant": "B-6",
+      "butt": "S-8",
+      "chest": "M-10",
+      "date": "27 / 01 / 2022",
+      "head": "M-7",
+      "leg": "B-5",
+      "name": "Silvio",
+      "time": "01:55"
+    },
+    "-MuPnfCotpKiLxOIUIDv": {
+      "ant": "B-1",
+      "butt": "S-4",
+      "chest": "M-6",
+      "date": "27 / 01 / 2022",
+      "head": "S-1",
+      "leg": "B-5",
+      "name": "Tabu",
+      "time": "10:08"
+    },
+    "-MuPq3D1wcddL5c90xPy": {
+      "ant": "S-6",
+      "butt": "M-5",
+      "chest": "B-3",
+      "date": "27 / 01 / 2022",
+      "head": "S-12",
+      "leg": "B-3",
+      "name": "el chapo",
+      "time": "10:21"
+    },
+    "-MuQpcHfpngTmnkqNXcg": {
+      "ant": "S-9",
+      "butt": "S-4",
+      "chest": "M-8",
+      "date": "27 / 01 / 2022",
+      "head": "S-1",
+      "leg": "M-11",
+      "name": "Silvia",
+      "time": "14:58"
+    },
+    "-MuQqiIaXAx_Gelk8yrk": {
+      "ant": "S-3",
+      "butt": "B-7",
+      "chest": "M-1",
+      "date": "27 / 01 / 2022",
+      "head": "S-15",
+      "leg": "M-4",
+      "name": "Xeno",
+      "time": "15:03"
+    },
+    "-MuVJStOsxW1C7AnEHrX": {
+      "ant": "S-4",
+      "butt": "B-2",
+      "chest": "M-5",
+      "date": "28 / 01 / 2022",
+      "head": "M-4",
+      "leg": "M-4",
+      "name": "Fabio",
+      "time": "11:49"
+    },
+    "-MuW37q56qx92Vw0IYQk": {
+      "ant": "S-7",
+      "butt": "M-9",
+      "chest": "M-7",
+      "date": "28 / 01 / 2022",
+      "head": "M-7",
+      "leg": "B-3",
+      "name": "StEf@n0",
+      "time": "15:17"
+    },
+    "-MuWvj1i51MTRtIzuqj-": {
+      "ant": "S-7",
+      "butt": "M-12",
+      "chest": "M-3",
+      "date": "28 / 01 / 2022",
+      "head": "B-6",
+      "leg": "S-7",
+      "name": "lucia",
+      "time": "19:08"
+    },
+    "-MuWy5BVbgWheqvLoPH1": {
+      "ant": "S-9",
+      "butt": "B-7",
+      "chest": "S-2",
+      "date": "28 / 01 / 2022",
+      "head": "B-5",
+      "leg": "S-4",
+      "name": "armando",
+      "time": "19:26"
+    },
+    "-MuX-zG8JFWHRZrfE3PB": {
+      "ant": "S-5",
+      "butt": "S-9",
+      "chest": "S-5",
+      "date": "28 / 01 / 2022",
+      "head": "B-1",
+      "leg": "B-3",
+      "name": "paola",
+      "time": "19:39"
+    },
+    "-MuX0uBABpZdMBYjP4w6": {
+      "ant": "S-6",
+      "butt": "B-8",
+      "chest": "B-13",
+      "date": "28 / 01 / 2022",
+      "head": "S-11",
+      "leg": "S-5",
+      "name": "alessandra",
+      "time": "19:48"
+    },
+    "-MuX1mHRj0FUrSNQSQTs": {
+      "ant": "B-7",
+      "butt": "B-6",
+      "chest": "B-6",
+      "date": "28 / 01 / 2022",
+      "head": "B-3",
+      "leg": "B-10",
+      "name": "laura",
+      "time": "19:52"
+    },
+    "-MuX2KDVi5ZuETDxed4I": {
+      "ant": "S-6",
+      "butt": "M-1",
+      "chest": "M-1",
+      "date": "28 / 01 / 2022",
+      "head": "B-4",
+      "leg": "M-3",
+      "name": "titti",
+      "time": "19:56"
+    },
+    "-Mu_43Vo8dAD-7w1Lp9_": {
+      "ant": "B-2",
+      "butt": "B-4",
+      "chest": "M-9",
+      "date": "29 / 01 / 2022",
+      "head": "S-10",
+      "leg": "M-3",
+      "name": "emanuele",
+      "time": "10:02"
+    },
+    "-Mu_UTgMe-vgJEV_xPH8": {
+      "ant": "B-4",
+      "butt": "B-3",
+      "chest": "B-6",
+      "date": "29 / 01 / 2022",
+      "head": "M-5",
+      "leg": "S-3",
+      "name": "Cecilia",
+      "time": "11:56"
+    },
+    "-MubH_jCH4kqzLSb-raE": {
+      "ant": "B-3",
+      "butt": "M-3",
+      "chest": "M-1",
+      "date": "29 / 01 / 2022",
+      "head": "S-14",
+      "leg": "B-6",
+      "name": "joao",
+      "time": "20:19"
+    },
+    "-MujrbwDb_69Uqfj9bXI": {
+      "ant": "B-1",
+      "butt": "B-3",
+      "chest": "B-4",
+      "date": "31 / 01 / 2022",
+      "head": "M-6",
+      "leg": "M-1",
+      "name": "Toto",
+      "time": "12:19"
+    },
+    "-MujuDeBc2zTDPhXzQnL": {
+      "ant": "S-9",
+      "butt": "M-8",
+      "chest": "M-3",
+      "date": "31 / 01 / 2022",
+      "head": "M-7",
+      "leg": "S-7",
+      "name": "ok",
+      "time": "12:31"
+    },
+    "-MutlgwOl_Plt9ddWvwI": {
+      "ant": "S-6",
+      "butt": "B-1",
+      "chest": "M-10",
+      "date": "02 / 02 / 2022",
+      "head": "M-2",
+      "leg": "B-1",
+      "name": "Gigi",
+      "time": "10:31"
+    },
+    "-MutlnE7EkxES221Rwt_": {
+      "ant": "S-9",
+      "butt": "S-3",
+      "chest": "B-9",
+      "date": "02 / 02 / 2022",
+      "head": "B-4",
+      "leg": "B-2",
+      "name": "cucu",
+      "time": "10:31"
+    },
+    "-Mutm8WBoqsajblflvD3": {
+      "ant": "B-3",
+      "butt": "S-4",
+      "chest": "M-10",
+      "date": "02 / 02 / 2022",
+      "head": "S-3",
+      "leg": "B-2",
+      "name": "Elliot",
+      "time": "10:31"
+    },
+    "-Mv8avt6Xv0i2sKhYeqj": {
+      "ant": "B-4",
+      "butt": "M-10",
+      "chest": "M-10",
+      "date": "05 / 02 / 2022",
+      "head": "B-5",
+      "leg": "S-7",
+      "name": "looca",
+      "time": "12:16"
+    },
+    "-Mv8bTnZL9x8bgtWAIOE": {
+      "ant": "S-6",
+      "butt": "M-3",
+      "chest": "S-5",
+      "date": "05 / 02 / 2022",
+      "head": "M-3",
+      "leg": "S-3",
+      "name": "sanguisuga",
+      "time": "12:19"
+    },
+    "-Mv9Y_U-tMgoJ-zXXYUA": {
+      "ant": "S-3",
+      "butt": "B-1",
+      "chest": "B-4",
+      "date": "05 / 02 / 2022",
+      "head": "S-8",
+      "leg": "S-6",
+      "name": "ricky",
+      "time": "16:41"
+    },
+    "-MvIp8mjkU6VH-zeYoci": {
+      "ant": "B-3",
+      "butt": "M-13",
+      "chest": "M-8",
+      "date": "07 / 02 / 2022",
+      "head": "S-3",
+      "leg": "S-10",
+      "name": "MR PECU",
+      "time": "11:53"
+    },
+    "-MvIpjes64wvfOGGURGf": {
+      "ant": "S-3",
+      "butt": "S-6",
+      "chest": "S-7",
+      "date": "07 / 02 / 2022",
+      "head": "B-4",
+      "leg": "B-11",
+      "name": "Bharath",
+      "time": "12:00"
+    },
+    "-MvIrVdmvIx-WeXjWiET": {
+      "ant": "B-6",
+      "butt": "B-3",
+      "chest": "B-9",
+      "date": "07 / 02 / 2022",
+      "head": "B-4",
+      "leg": "S-2",
+      "name": "Richi il Grande",
+      "time": "12:04"
+    },
+    "-MvIs39GSeoQY9Cjdn-Z": {
+      "ant": "S-6",
+      "butt": "S-8",
+      "chest": "S-3",
+      "date": "07 / 02 / 2022",
+      "head": "B-1",
+      "leg": "B-9",
+      "name": "Zingale",
+      "time": "12:08"
+    },
+    "-MvJR71GAsCaTjR1n6Gb": {
+      "ant": "B-1",
+      "butt": "M-3",
+      "chest": "M-8",
+      "date": "07 / 02 / 2022",
+      "head": "S-3",
+      "leg": "B-3",
+      "name": "Ire",
+      "time": "14:45"
+    },
+    "-MvO1OTmnUT9Ja7AEvSP": {
+      "ant": "S-5",
+      "butt": "B-2",
+      "chest": "M-8",
+      "date": "08 / 02 / 2022",
+      "head": "M-1",
+      "leg": "S-6",
+      "name": "Liya",
+      "time": "12:09"
+    },
+    "-MvUW55Z_DrkDKvJdhX4": {
+      "ant": "S-8",
+      "butt": "S-4",
+      "chest": "S-6",
+      "date": "09 / 02 / 2022",
+      "head": "B-3",
+      "leg": "S-1",
+      "name": "Marco",
+      "time": "18:22"
+    },
+    "-Mvsct-02o-7MzyuzwLE": {
+      "ant": "B-7",
+      "butt": "S-7",
+      "chest": "S-8",
+      "date": "14 / 02 / 2022",
+      "head": "S-4",
+      "leg": "M-4",
+      "name": "guido",
+      "time": "15:26"
+    },
+    "-N-Em3ZPacQ5e1ZN5XJ6": {
+      "ant": "S-5",
+      "butt": "S-8",
+      "chest": "M-2",
+      "date": "09 / 04 / 2022",
+      "head": "M-7",
+      "leg": "S-10",
+      "name": "chiara",
+      "time": "21:22"
+    },
+    "-N-EmUiIGjLhPtZS4Ln8": {
+      "ant": "S-8",
+      "butt": "B-5",
+      "chest": "S-5",
+      "date": "09 / 04 / 2022",
+      "head": "B-5",
+      "leg": "M-7",
+      "name": "Kevinn",
+      "time": "21:22"
+    },
+    "-N-Enbj1eKPDv7K9c4ym": {
+      "ant": "M-12",
+      "butt": "S-6",
+      "chest": "B-3",
+      "date": "09 / 04 / 2022",
+      "head": "S-2",
+      "leg": "B-2",
+      "name": "chiara",
+      "time": "21:29"
+    },
+    "-N-ZsWELSm0dWwbbhZKq": {
+      "ant": "S-4",
+      "butt": "S-6",
+      "chest": "M-6",
+      "date": "13 / 04 / 2022",
+      "head": "S-15",
+      "leg": "M-4",
+      "name": "Vale",
+      "time": "23:41"
+    },
+    "-N1OFPtY6yNr_phDaakD": {
+      "ant": "B-2",
+      "butt": "M-10",
+      "chest": "B-12",
+      "date": "06 / 05 / 2022",
+      "head": "S-5",
+      "leg": "B-8",
+      "name": "Lorenzo",
+      "time": "14:01"
+    },
+    "-N3RTcNxxWVh9lZvi6Hz": {
+      "ant": "S-8",
+      "butt": "S-5",
+      "chest": "S-4",
+      "date": "01 / 06 / 2022",
+      "head": "S-8",
+      "leg": "B-4",
+      "name": "ISU",
+      "time": "01:34"
+    },
+    "-N3ubjfk8h4TvS2cdnQp": {
+      "ant": "B-5",
+      "butt": "S-5",
+      "chest": "S-4",
+      "date": "06 / 06 / 2022",
+      "head": "B-4",
+      "leg": "M-5",
+      "name": "sofi",
+      "time": "22:02"
+    },
+    "-N4iWETzbn6dM-HOyV9u": {
+      "ant": "S-5",
+      "butt": "M-3",
+      "chest": "S-3",
+      "date": "16 / 06 / 2022",
+      "head": "S-10",
+      "leg": "M-2",
+      "name": "Zac",
+      "time": "23:52"
+    }
+  }
+}
