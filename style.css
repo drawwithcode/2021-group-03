@@ -30,6 +30,10 @@ a {
   text-decoration: none;
   color: black;
 }
+/* iOS makes button text blue */
+button {
+  color: black;
+}
 i {
   font-family: century-italic;
   font-style: normal;
@@ -37,10 +41,6 @@ i {
 
 input {
   margin: 10px;
-}
-
-#home-mobile{
-  display: none;
 }
 
 .insect-box {
@@ -338,6 +338,7 @@ input:focus {
   width: 100%;
   -webkit-appearance: none; /* Override default CSS styles */
   height: 1px;
+  -webkit-tap-highlight-color: transparent;
 }
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
@@ -350,6 +351,11 @@ input:focus {
   background: url("assets/drag2.png");
   background-repeat: no-repeat;
   cursor: pointer;
+  /* iOS draws its own white square and shadow behind the thumb */
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  box-shadow: none;
 }
 .slider-text {
   display: flex;
@@ -443,21 +449,228 @@ input:focus {
   transition: 1s;
   cursor: default;
 }
+/* invisible buttons can't be pressed by mistake (easy with a finger) */
+.next-btn.hide,
+.intro-btn.hide {
+  pointer-events: none;
+}
 
 /*----------------------- MOBILE -----------------------*/
 
 @media (max-width: 768px) {
+  /* HOME */
+
   #home-container {
+    height: 100svh;
+    font-size: 20px;
+  }
+  #home-title {
+    font-size: 28px;
+    padding-top: 24px;
+    text-align: center;
+  }
+  #home-gif {
+    width: 100%;
+    margin: -20px 0 -20px 0;
+  }
+
+  /* NAVBAR */
+
+  #navbar-container {
+    position: sticky;
+    top: 0;
+  }
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px 8px 16px;
+    font-size: 18px;
+  }
+  .navbar-right {
+    order: 1;
+  }
+  .navbar-sort {
+    order: 2;
+  }
+  .navbar-btn {
+    margin: 0 10px 0 10px;
+  }
+  select {
+    font-size: 18px;
+  }
+  #navbar-gradient {
+    height: 24px;
+  }
+
+  /* ARCHIVE */
+
+  #archive-container {
+    padding: 24px 8px 40px 8px;
+  }
+  .insect-box {
+    width: calc(50% - 20px);
+    margin: 0;
+  }
+  .partsBox {
+    height: auto;
+    aspect-ratio: 180 / 250;
+  }
+  .name {
+    font-size: 18px;
+  }
+  .date {
+    font-size: 14px;
+    margin-top: 8px;
+  }
+
+  /* ABOUT */
+
+  #about-container {
+    font-size: 18px;
+    padding: 8px 0 60px 0;
+  }
+  #about-content {
+    width: auto;
+    padding: 0 20px 0 20px;
+  }
+  #about-infos {
+    flex-direction: column;
+  }
+  .authors {
+    margin-top: 40px;
+  }
+
+  /* INTRO */
+
+  #intro-container {
+    height: 100svh;
+    font-size: 20px;
+  }
+  .intro-text {
+    width: 100%;
+    padding: 0 24px 0 24px;
+    box-sizing: border-box;
+  }
+
+  /* QUESTIONS: insect on top, question below, all in one screen
+     (the canvases in sketch-test.js follow the screen height too) */
+
+  #test-body {
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  #question-container {
+    flex-direction: column;
+    justify-content: flex-start;
+    height: auto;
+  }
+  .question-dx {
+    order: -2;
+    width: 100%;
+    height: 30vh;
+    height: 30svh;
+    padding: 0;
+    margin-top: 8px;
+  }
+  .drawing {
+    width: auto;
+    height: 30vh;
+    height: 30svh;
+  }
+  .line {
+    order: -1;
+    width: 85%;
+    height: 1px;
+    margin: 12px 0 16px 0;
+  }
+  .question-sx {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 20px 16px 20px;
+  }
+  .question-text {
+    font-size: 18px;
+    margin-bottom: 14px;
+  }
+  .question-sx .question-text br {
     display: none;
   }
-  
-  #home-mobile {
-    display: flex;
-    font-size: 20px;
-    text-align: center;
-    justify-content: center;
-    height: 100vh;
+  .help {
+    font-size: 15px;
+    margin-top: -4px;
+    margin-bottom: 12px;
+  }
+  .question-input {
+    width: 100%;
     align-items: center;
-    line-height: 32px;
+  }
+  .answer-btn {
+    width: 100%;
+    max-width: 360px;
+    font-size: 16px;
+    margin: 5px;
+    padding: 10px 14px 10px 14px;
+  }
+  .next-btn,
+  #mouse-btn,
+  #webcam-btn,
+  #stop-audio,
+  #send-data,
+  #showQ4,
+  #showQ5 {
+    margin-top: 14px;
+  }
+  #send-data {
+    padding: 8px 15px 8px 15px;
+  }
+  .slider-container {
+    width: 100%;
+    margin-top: 8px;
+  }
+  /* taller touch area, same 1px line */
+  .slider {
+    box-sizing: border-box;
+    margin: 10px 0 10px 0;
+    height: 44px;
+    border-bottom: none;
+    background: linear-gradient(#c2b0a5, #c2b0a5) center / 100% 1px no-repeat;
+  }
+  .slider:focus {
+    border-bottom: none;
+  }
+  .slider-text {
+    font-size: 16px;
+  }
+  /* rubbing the box must not scroll the page */
+  #question-3-canvas canvas {
+    touch-action: none;
+  }
+
+  /* RESULT: the insect takes the whole screen */
+
+  #question-container.finished .question-dx {
+    height: 100vh;
+    height: 100svh;
+    margin-top: 0;
+  }
+  #question-container.finished .drawing {
+    height: 64vh;
+  }
+  #result-text {
+    top: 10%;
+  }
+  #result-btns {
+    bottom: 10%;
+  }
+}
+
+/* short phones (iPhone SE, mini): smaller insect so the questions still fit */
+@media (max-width: 768px) and (max-height: 620px) {
+  .question-dx,
+  .drawing {
+    height: 24vh;
+    height: 24svh;
   }
 }

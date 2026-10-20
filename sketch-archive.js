@@ -253,19 +253,24 @@ function displayInsects() {
 
       let legBox = createImg("assets/partsNew/leg/leg-" + Leg + ".png")
         .parent(partsBox)
-        .addClass("part-img");
+        .addClass("part-img")
+        .attribute("loading", "lazy");
       let antBox = createImg("assets/partsNew/ant/ant-" + Ant + ".png")
         .parent(partsBox)
-        .addClass("part-img");
+        .addClass("part-img")
+        .attribute("loading", "lazy");
       let headBox = createImg("assets/partsNew/head/head-" + Head + ".png")
         .parent(partsBox)
-        .addClass("part-img");
+        .addClass("part-img")
+        .attribute("loading", "lazy");
       let buttBox = createImg("assets/partsNew/butt/butt-" + Butt + ".png")
         .parent(partsBox)
-        .addClass("part-img");
+        .addClass("part-img")
+        .attribute("loading", "lazy");
       let chestBox = createImg("assets/partsNew/chest/chest-" + Chest + ".png")
         .parent(partsBox)
-        .addClass("part-img");
+        .addClass("part-img")
+        .attribute("loading", "lazy");
 
       let name = createElement("p", InsectsArray[i].name).parent(box).addClass("name");
       let date = createElement("p", InsectsArray[i].date).parent(box).addClass("date");

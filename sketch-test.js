@@ -14,6 +14,15 @@ let insectSound4;
 let insectSound5;
 let insectSounds = [];
 
+// Phones (same breakpoint as the mobile layout in style.css)
+let isMobile = window.matchMedia("(max-width: 768px)").matches;
+// Touch screens: no mouse to shake, taps instead of clicks
+let isTouch = window.matchMedia("(pointer: coarse)").matches;
+// Width of the interactive canvases on phones
+let mobileCanvasW = Math.min(window.innerWidth - 40, 480);
+// Their height follows the screen height, so every question fits without scrolling
+let mobileH = window.innerHeight;
+
 //MOUSE
 
 let vel = 0;
@@ -24,6 +33,7 @@ let indice = 0;
 let click = 0;
 let buttonMouse;
 let canvasMouse;
+let shake = 0;
 
 let century;
 
@@ -62,6 +72,12 @@ let sketch_1 = function (p) {
     insectSound5 = p.loadSound("assets/sound/insect-5.mp3");
 
     insectSounds.push(insectSound1, insectSound2, insectSound3, insectSound4, insectSound5);
+
+    if (isTouch) {
+      p.selectAll(".help").forEach(function (help) {
+        help.html(help.html().replace("Click", "Tap"));
+      });
+    }
 
     //TRANSITIONS FUNCTIONS
 
@@ -119,6 +135,8 @@ let sketch_1 = function (p) {
     inputName.mouseClicked(playMusic);
 
     function playMusic() {
+      // mobile browsers keep audio muted until it's resumed by a tap
+      p.getAudioContext().resume();
       if (clockSound.isPlaying() == false) {
         clockSound.loop();
         clockSound.setVolume(0.15, [1000]);
@@ -244,7 +262,54 @@ let sketch_1 = function (p) {
       p.select("#showQ3").removeClass("hide");
     }
 
-    p.select("#q2-slider").mousePressed(showNextAfterSlider);
+    let setButt = p.select("#q2-slider");
+
+    setButt.mousePressed(showNextAfterSlider);
+    setButt.mouseReleased(sliderQ2);
+    // dragging with a finger doesn't fire mouse events
+    setButt.input(sliderQ2);
+
+    function sliderQ2() {
+      let q2Value = setButt.value();
+      showNextAfterSlider();
+      if (q2Value <= 33) {
+        butt_S();
+      } else if (q2Value > 33 && q2Value <= 66) {
+        butt_M();
+      } else if (q2Value > 66) {
+        butt_B();
+      }
+    }
+
+    // Butt images list
+
+    function butt_S() {
+      let buttS_List = ["S-1", "S-2", "S-3", "S-4", "S-5", "S-6", "S-7", "S-8", "S-9", "S-10"];
+      buttX = p.random(buttS_List);
+    }
+    function butt_M() {
+      let buttM_List = [
+        "M-1",
+        "M-2",
+        "M-3",
+        "M-4",
+        "M-5",
+        "M-6",
+        "M-7",
+        "M-8",
+        "M-9",
+        "M-10",
+        "M-11",
+        "M-12",
+        "M-13",
+        "M-14",
+      ];
+      buttX = p.random(buttM_List);
+    }
+    function butt_B() {
+      let buttB_List = ["B-1", "B-2", "B-3", "B-4", "B-5", "B-6", "B-7", "B-8", "B-9"];
+      buttX = p.random(buttB_List);
+    }
 
     //---------LEG------------
 
@@ -372,8 +437,14 @@ let sketch_1 = function (p) {
       p.select("#question-5").style("opacity", "0");
       p.select(".line").style("display", "none");
 
-      p.select("#question-5").style("width", "0");
-      p.select("#question-5").style("padding", "0px");
+      if (isMobile) {
+        p.select("#question-5").hide();
+        p.select("#question-container").addClass("finished");
+        window.scrollTo(0, 0);
+      } else {
+        p.select("#question-5").style("width", "0");
+        p.select("#question-5").style("padding", "0px");
+      }
       p.select("#result-text").style("display", "flex");
       p.select("#result-btns").style("display", "flex");
       p.select(".question-dx").style("width", "100vw");
@@ -464,62 +535,17 @@ let sketch_1 = function (p) {
       antX = p.random(antB_List);
     }
   };
-
-  p.draw = function () {
-    //---------BUTT------------
-
-    let q2Value = p.select("#q2-slider").value();
-    let setButt = p.select("#q2-slider");
-
-    setButt.mouseReleased(sliderQ2);
-
-    function sliderQ2() {
-      if (q2Value <= 33) {
-        butt_S();
-      } else if (q2Value > 33 && q2Value <= 66) {
-        butt_M();
-      } else if (q2Value > 66) {
-        butt_B();
-      }
-    }
-
-    // Butt images list
-
-    function butt_S() {
-      let buttS_List = ["S-1", "S-2", "S-3", "S-4", "S-5", "S-6", "S-7", "S-8", "S-9", "S-10"];
-      buttX = p.random(buttS_List);
-    }
-    function butt_M() {
-      let buttM_List = [
-        "M-1",
-        "M-2",
-        "M-3",
-        "M-4",
-        "M-5",
-        "M-6",
-        "M-7",
-        "M-8",
-        "M-9",
-        "M-10",
-        "M-11",
-        "M-12",
-        "M-13",
-        "M-14",
-      ];
-      buttX = p.random(buttM_List);
-    }
-    function butt_B() {
-      let buttB_List = ["B-1", "B-2", "B-3", "B-4", "B-5", "B-6", "B-7", "B-8", "B-9"];
-      buttX = p.random(buttB_List);
-    }
-  };
 };
 
 // MOUSE SKETCH
 
 let sketch_Mouse = function (p) {
   p.setup = function () {
-    canvasMouse = p.createCanvas(p.windowWidth / 3, p.windowHeight / 2);
+    if (isMobile) {
+      canvasMouse = p.createCanvas(mobileCanvasW, p.round(p.constrain(mobileH * 0.22, 120, 200)));
+    } else {
+      canvasMouse = p.createCanvas(p.windowWidth / 3, p.windowHeight / 2);
+    }
     canvasMouse.parent("question-3-canvas");
     p.background("red");
     buttonMouse = p.select("#mouse-btn");
@@ -538,7 +564,48 @@ let sketch_Mouse = function (p) {
     }
 
     century = p.loadFont("assets/fonts/century-schoolbook/cen-schlbk-r.TTF");
+
+    // On touch screens rubbing the box moves the cursor like the mouse does,
+    // and shaking the phone works too where motion sensors are available
+    if (isTouch) {
+      p.select("#help-3").html("Rub your finger on the box to answer.<br />Tap the box to stop.");
+      window.addEventListener("devicemotion", readShake);
+
+      // iOS asks for permission and only from a tap: use the Next that opens this question
+      if (typeof DeviceMotionEvent !== "undefined" && DeviceMotionEvent.requestPermission) {
+        document.getElementById("showQ3").addEventListener(
+          "click",
+          function () {
+            DeviceMotionEvent.requestPermission().catch(function () {});
+          },
+          { once: true }
+        );
+      }
+    }
   };
+
+  let shakeFound = false;
+
+  // keeps the strongest shake (m/s², gravity excluded) until the next frame
+  function readShake(e) {
+    let a = e.acceleration;
+    let g = e.accelerationIncludingGravity;
+    let level;
+    if (a && a.x !== null) {
+      level = Math.hypot(a.x, a.y, a.z);
+    } else if (g && g.x !== null) {
+      level = Math.abs(Math.hypot(g.x, g.y, g.z) - 9.81);
+    } else {
+      return;
+    }
+    if (level > shake) {
+      shake = level;
+    }
+    if (!shakeFound) {
+      shakeFound = true;
+      p.select("#help-3").html("Shake your phone to answer.<br />Tap the box to stop.");
+    }
+  }
 
   // Legs images list
 
@@ -562,6 +629,12 @@ let sketch_Mouse = function (p) {
     let difX = p.abs(p.mouseX - p.pmouseX);
     let difY = p.abs(p.mouseY - p.pmouseY);
     let vel = difX + difY;
+
+    //sui telefoni conta anche lo scuotimento (una scossa forte arriva verso fondo scala)
+    if (isTouch) {
+      vel = p.max(vel, shake * 5);
+      shake = 0;
+    }
 
     //se non è stata ancora data una risposta ossia quando il valore click è 0
     if (click == 0) {
@@ -588,15 +661,17 @@ let sketch_Mouse = function (p) {
     );
     p.line(p.width - 20, p.height / 2 - 5, p.width - 20, p.height / 2 + 5);
 
+    let labelY = p.height / 2 + (isMobile ? 32 : 50);
+
     p.push();
     p.textFont(century);
-    p.textSize(18);
+    p.textSize(isMobile ? 15 : 18);
     p.textAlign(p.CENTER);
     p.fill("black");
     p.noStroke();
-    p.text("Almost never", (p.width - 40) / 6 + 20, p.height / 2 + 50);
-    p.text("Sometimes", p.width / 2, p.height / 2 + 50);
-    p.text("Often", ((p.width - 40) / 6) * 5 + 20, p.height / 2 + 50);
+    p.text(isMobile ? "Almost\nnever" : "Almost never", (p.width - 40) / 6 + 20, labelY);
+    p.text("Sometimes", p.width / 2, labelY);
+    p.text("Often", ((p.width - 40) / 6) * 5 + 20, labelY);
     p.pop();
 
     let xCerchio = p.map(media, 0, 150, 20, p.width - 20, true);
@@ -612,7 +687,7 @@ let sketch_Mouse = function (p) {
 
     p.noFill();
     p.stroke(173, 149, 127);
-    p.rect(0, 0, p.windowWidth / 3, p.windowHeight / 2 - 1);
+    p.rect(0, 0, p.width, p.height - 1);
 
     //nel momento in cui avviene un click dentro il canvas manda la funzione stopShake
     canvasMouse.mouseClicked(stopShake);
@@ -640,15 +715,24 @@ let sketch_Mouse = function (p) {
 
 let sketch_Webcam = function (p) {
   p.setup = function () {
-    let canvasWebcam = p.createCanvas(p.windowWidth / 3, p.windowHeight / 2 + 60);
+    //on phones the image is a 4:3 box centred above a full width answers line
+    if (isMobile) {
+      hCam = p.round(p.constrain(mobileH * 0.2, 100, 200));
+      wCam = p.min(mobileCanvasW, p.round((hCam * 4) / 3));
+    } else {
+      wCam = p.windowWidth / 3;
+      hCam = p.windowHeight / 2 - 10;
+    }
+
+    let canvasWebcam = p.createCanvas(isMobile ? mobileCanvasW : wCam, hCam + (isMobile ? 60 : 70));
     canvasWebcam.parent("question-4-canvas");
 
-    wCam = p.windowWidth / 3;
-    hCam = p.windowHeight / 2 - 10;
-
-    //webcam
-    video = p.createCapture(p.VIDEO);
-    video.size(wCam, hCam);
+    //webcam (front camera on phones)
+    video = p.createCapture({ video: { facingMode: "user" }, audio: false });
+    //on phones the camera is often portrait: it gets cropped in draw instead of stretched
+    if (!isMobile) {
+      video.size(wCam, hCam);
+    }
     video.hide();
 
     p.frameRate(10);
@@ -667,11 +751,11 @@ let sketch_Webcam = function (p) {
         fotoScattata = 0;
         button.html("Stop");
       }
-      if (xPallina < 213) {
+      if (xPallina < p.width / 3) {
         head_S();
-      } else if (xPallina > 213 && xPallina < 426) {
+      } else if (xPallina > p.width / 3 && xPallina < (p.width / 3) * 2) {
         head_M();
-      } else if (xPallina > 426) {
+      } else if (xPallina > (p.width / 3) * 2) {
         head_B();
       }
     }
@@ -716,15 +800,20 @@ let sketch_Webcam = function (p) {
 
     p.push();
 
-    p.translate(wCam, 0);
+    p.translate((p.width + wCam) / 2, 0);
     p.scale(-1, 1);
 
     video.loadPixels();
 
+    //ritaglio centrale del video grande wCam x hCam (su desktop il video ha già quella misura)
+    let k = p.min(video.width / wCam, video.height / hCam);
+    let cropX = (video.width - wCam * k) / 2;
+    let cropY = (video.height - hCam * k) / 2;
+
     //l'immagine che arriva da var video viene trasformato in una griglia di quadrati
-    for (let y = 0; y < video.height; y += gridSize) {
-      for (let x = 0; x < video.width; x += gridSize) {
-        let index = (y * video.width + x) * 4;
+    for (let y = 0; y < hCam; y += gridSize) {
+      for (let x = 0; x < wCam; x += gridSize) {
+        let index = (p.floor(cropY + y * k) * video.width + p.floor(cropX + x * k)) * 4;
 
         let r = video.pixels[index + 0];
         let g = video.pixels[index + 1];
@@ -761,7 +850,7 @@ let sketch_Webcam = function (p) {
     p.triangle(xPallina - 10, p.height - 45, xPallina, p.height - 30, xPallina + 10, p.height - 45);
 
     p.textFont(century);
-    p.textSize(18);
+    p.textSize(isMobile ? 15 : 18);
     p.textAlign(p.CENTER);
     p.fill("black");
     p.noStroke();
@@ -783,37 +872,47 @@ let sketch_Webcam = function (p) {
 // AUDIO SKETCH
 
 let sketch_Audio = function (p) {
+  // desktop: 600x400, circle centred at x 200, answers line from 200 to 580
+  let wAudio = isMobile ? mobileCanvasW : 600;
+  let hAudio = isMobile ? p.round(p.constrain(mobileH * 0.24, 130, 260)) : 400;
+  let x0 = isMobile ? 40 : 200;
+  let seg = (wAudio - 20 - x0) / 3;
+  // on phones the circle shrinks with the line, so the mic sensitivity stays the same
+  let k = isMobile ? seg / 126 : 1;
+
   p.setup = function () {
-    let canvasAudio = p.createCanvas(600, 400);
+    let canvasAudio = p.createCanvas(wAudio, hAudio);
     canvasAudio.parent("question-5-canvas");
     canvasAudio.mousePressed(startAudio);
   };
   p.draw = function () {
+    let y0 = hAudio / 2;
+
     p.background(255, 252, 241, 100);
     p.stroke(194, 176, 165);
     p.strokeWeight(1);
 
-    p.line(195, 200, 580, 200);
+    p.line(x0 - 5, y0, x0 + seg * 3, y0);
 
-    p.line(200, 195, 200, 205);
-    p.line(326, 195, 326, 205);
-    p.line(452, 195, 452, 205);
-    p.line(580, 195, 580, 205);
+    p.line(x0, y0 - 5, x0, y0 + 5);
+    p.line(x0 + seg, y0 - 5, x0 + seg, y0 + 5);
+    p.line(x0 + seg * 2, y0 - 5, x0 + seg * 2, y0 + 5);
+    p.line(x0 + seg * 3, y0 - 5, x0 + seg * 3, y0 + 5);
 
     p.push();
     p.noFill();
     p.stroke(194, 176, 165);
-    p.rect(0, 0, 600, 400);
+    p.rect(0, 0, wAudio, hAudio);
     p.pop();
 
     p.textFont(century);
-    p.textSize(18);
+    p.textSize(isMobile ? 15 : 18);
     p.textAlign(p.CENTER);
     p.fill("black");
     p.noStroke();
-    p.text("Almost never", 263, 230);
-    p.text("Sometimes", 389, 230);
-    p.text("Often", 515, 230);
+    p.text(isMobile ? "Almost\nnever" : "Almost never", x0 + seg / 2, y0 + 30);
+    p.text("Sometimes", x0 + seg * 1.5, y0 + 30);
+    p.text("Often", x0 + seg * 2.5, y0 + 30);
 
     if (mic) {
       const micLevel = mic.getLevel();
@@ -822,7 +921,7 @@ let sketch_Audio = function (p) {
       p.push();
       p.stroke(173, 149, 127);
       p.noFill();
-      p.circle(200, 200, d * 3);
+      p.circle(x0, y0, d * 3 * k);
       p.pop();
     }
   };
