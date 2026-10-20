@@ -132,6 +132,13 @@ function SizeAsc() {
   displayInsects();
 }
 
+// "DD / MM / YYYY" + "HH:MM" -> YYYYMMDDHHMM (old insects may have no time)
+function dateToNumber(insect) {
+  let d = insect.date.split("/").map(Number);
+  let t = (insect.time || "0:0").split(":").map(Number);
+  return d[2] * 100000000 + d[1] * 1000000 + d[0] * 10000 + t[0] * 100 + t[1];
+}
+
 function compareNameAB(a, b) {
   return a.name - b.name;
 }
@@ -158,25 +165,13 @@ function displayInsects() {
     //SORT DATA
     if (sortDataCresc) {
       InsectsArray.sort(function (a, b) {
-        if (b.date < a.date) return -1;
-        if (b.date > a.date) return 1;
-        if (b.date == a.date) {
-          if (b.time < a.time) return -1;
-          if (b.time > a.time) return 1;
-          return 0;
-        }
+        return dateToNumber(b) - dateToNumber(a);
       });
     }
 
     if (sortDataDecresc) {
       InsectsArray.sort(function (a, b) {
-        if (a.date < b.date) return -1;
-        if (a.date > b.date) return 1;
-        if (a.date == b.date) {
-          if (a.time < b.time) return -1;
-          if (a.time > b.time) return 1;
-          return 0;
-        }
+        return dateToNumber(a) - dateToNumber(b);
       });
     }
 
